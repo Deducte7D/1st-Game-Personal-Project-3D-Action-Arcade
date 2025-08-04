@@ -1,0 +1,41 @@
+# === UNITY GENERATED FILES ===
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+[Oo]bj/
+[Mm]emoryCaptures/
+
+# === VS CODE / MONODEVELOP ===
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# === OS GENERATED FILES ===
+.DS_Store
+Thumbs.db
+
+# === UNITY CLOUD BUILD ===
+sysinfo.txt
+
+# === LOG FILES ===
+*.log
+
+# === CRASH REPORTS ===
+*.stacktrace
+
+# === PLUGINS ===
+*.apk
+*.aab
+*.jar
+*.dll
+*.pdb
+*.mdb
+
+# === UNITY COLLAB ===
+.collabignore
