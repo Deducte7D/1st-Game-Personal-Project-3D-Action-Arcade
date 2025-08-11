@@ -1,30 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "S:\\Unity Projects\\Personal Project\\",
+  "WorkspaceRootPath": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\unity projects\\personal project\\assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\Unity Projects\\Personal Project\\assets\\scripts\\tackletriggert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tackletriggert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\Unity Projects\\Personal Project\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\Unity Projects\\Personal Project\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\Unity Projects\\Personal Project\\assets\\scripts\\playerhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\github clone repos\\1st-game-personal-project-3d-action-arcade\\personal project\\assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\Unity Projects\\Personal Project\\assets\\scripts\\spawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\tackletriggert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\tackletriggert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\spawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\playerhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playerhitbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,27 +34,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "SpawnManager.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\SpawnManager.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\SpawnManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnManager.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\SpawnManager.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\SpawnManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\SpawnManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T04:48:13.899Z"
+              "WhenOpened": "2025-07-16T04:48:13.899Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "TackleTriggerT3.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\TackleTriggerT3.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\TackleTriggerT3.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\TackleTriggerT3.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\TackleTriggerT3.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\TackleTriggerT3.cs",
               "RelativeToolTip": "Assets\\Scripts\\TackleTriggerT3.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAgwEIAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -63,24 +64,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "EnemyControllerT3.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyControllerT3.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyControllerT3.cs",
-              "ViewState": "AgIAADwBAAAAAAAAAAAgwFUBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALsAAAAAAAAAAAAswNsAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-16T08:04:53.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PlayerHitbox.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\PlayerHitbox.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\PlayerHitbox.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerHitbox.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\PlayerHitbox.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\PlayerHitbox.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerHitbox.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -90,24 +91,24 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "PlayerController.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\PlayerController.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\PlayerController.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwDsAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T21:33:42.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "EnemyController.cs",
-              "DocumentMoniker": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyController.cs",
-              "ToolTip": "S:\\Unity Projects\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAkwBMAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-04T21:33:35.453Z",
               "EditorCaption": ""

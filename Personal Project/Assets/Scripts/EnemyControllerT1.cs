@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyControllerT1 : MonoBehaviour
 {
 
     private Rigidbody enemyRb;
@@ -53,12 +53,12 @@ public class EnemyController : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
             }
         }
-        
+
 
 
         // Only follow when not tackling
         if (!isTackling)
-            //if (!isTackling && !isSlide)
+        //if (!isTackling && !isSlide)
         {
             // Direction from enemy to feet target
             Vector3 direction = (feetTarget.position - transform.position);
@@ -67,9 +67,9 @@ public class EnemyController : MonoBehaviour
             // Apply force to follow the feet
             enemyRb.AddForce(direction.normalized * followForce);
         }
-        
 
-        
+
+
 
         //// Optional: Match rotation with player (if you want enemy to rotate too)
         //transform.rotation = feetTarget.rotation;
@@ -88,7 +88,7 @@ public class EnemyController : MonoBehaviour
 
 
     // Tackle Trigger
-    public void StartSlideTackle(Transform target)
+    public void StartSlideTackleT1(Transform target)
     {
         if (!canTackle) return;
 
@@ -117,9 +117,10 @@ public class EnemyController : MonoBehaviour
         //    parent.position = pos;
         //}
 
-
         canTackle = false;
         StartCoroutine(ResetTackle(5f));
+
+        StartCoroutine(DisableAfterDelay(gameObject, 2.5f));
     }
 
     // Reset Coroutine
@@ -132,7 +133,13 @@ public class EnemyController : MonoBehaviour
         playerAnim.SetBool("Tackle_bool", false);
         //playerAnim.SetBool("Crouch_up", true);
         playerAnim.SetBool("Crouch_up", false);
-        
+
+    }
+
+    private System.Collections.IEnumerator DisableAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
     }
 
 }

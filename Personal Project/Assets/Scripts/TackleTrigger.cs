@@ -3,6 +3,7 @@ using UnityEngine;
 public class TackleTrigger : MonoBehaviour
 {
     public EnemyController enemy;
+    public EnemyControllerT1 enemyT1;
     //private Rigidbody radiusTrig;
 
 
@@ -16,7 +17,17 @@ public class TackleTrigger : MonoBehaviour
     {
         //Debug.Log("Trigger entered by: " + other.name);
 
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("EnemyT1"))
+        {
+            EnemyControllerT1 enemyT1 = other.GetComponent<EnemyControllerT1>();
+
+            if (enemyT1 != null)
+            {
+                enemyT1.StartSlideTackleT1(transform.root); // send player transform as target
+            }
+        }
+
+        if (other.CompareTag("EnemyT2"))
         {
 
             EnemyController enemy = other.GetComponent<EnemyController>();

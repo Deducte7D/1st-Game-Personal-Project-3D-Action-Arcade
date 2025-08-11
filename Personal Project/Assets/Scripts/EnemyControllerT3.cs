@@ -41,7 +41,10 @@ public class EnemyControllerT3 : MonoBehaviour
     private bool isSageMode = false;
     public bool isSpecialing = false;
     public float specialDelay = 0f;
-    
+
+    public GameObject bunshinPrefab1;
+    public GameObject bunshinPrefab2;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -174,6 +177,10 @@ public class EnemyControllerT3 : MonoBehaviour
         Vector3 endPosition = new Vector3(-1.4f, 6.2f, 3.34f); // floating in air
                                                                // Vector3 endPosition = new Vector3(targetPosition.x, targetPosition.y + 3f, targetPosition.z); // floating in air
 
+        float spawnTimer = 0f;
+        int spawnedCount = 0;
+        int totalClones = 6;
+        float spawnInterval = 1f;
 
         //StartCoroutine(RotateTowardsTarget(target, duration, rotationSpeed));
 
@@ -204,6 +211,23 @@ public class EnemyControllerT3 : MonoBehaviour
             // Position Interpolation
             enemyRb.MovePosition(Vector3.Lerp(startPosition, endPosition, t));
 
+            // --- Spawn clones while floating ---
+            spawnTimer += Time.deltaTime;
+            if (spawnedCount < totalClones && spawnTimer >= spawnInterval)
+            {
+                spawnTimer = 0f;
+
+                Vector3 spawnPos = transform.position +
+                                   new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+
+                // Pick randomly between two prefabs
+                GameObject prefabToSpawn = (Random.value < 0.4f) ? bunshinPrefab1 : bunshinPrefab2;
+
+                Instantiate(prefabToSpawn, spawnPos, transform.rotation);
+
+                spawnedCount++;
+            }
+
 
             yield return null; // Always yield so coroutine continues
         }
@@ -219,8 +243,23 @@ public class EnemyControllerT3 : MonoBehaviour
         //enemyRb.constraints = originalConstraints;
 
         // spawns bunshin
-
         // stay that position until 1,2,3 (total 6) bunshin is spawned
+        
+        //int totalClones = 6;
+        //float spawnInterval = 1f; // seconds between spawns
+
+        //for (int i = 0; i < totalClones; i++)
+        //{
+        //    // Pick a spawn position (example: around the enemy)
+        //    Vector3 spawnPos = transform.position +
+        //                       new Vector3(Random.Range(-2f, 2f), 3.1f, Random.Range(-2f, 2f));
+
+        //    // Draft version using Instantiate
+        //    Instantiate(bunshinPrefab, spawnPos, transform.rotation);
+
+        //    // Wait before spawning next one
+        //    yield return new WaitForSeconds(spawnInterval);
+        //}
 
 
         // then join fight as normal
