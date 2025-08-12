@@ -5,6 +5,7 @@ public class MoveLeftBG : MonoBehaviour
 
     private float speed = 17;
     private PlayerController playerControllerScript;
+    private bool isMoving = true;
     //private float leftbound = -10;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,7 +18,7 @@ public class MoveLeftBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.gameOver == false)
+        if (isMoving && playerControllerScript.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
         }
@@ -30,7 +31,20 @@ public class MoveLeftBG : MonoBehaviour
 
     public float GetSpeed()
     {
+        //if (isMoving)
+        //{
+        //    return speed;
+        //}
+        //else
+        //{
+        //    return speed = 0;
+        //}
         return speed;
+    }
+
+    public void StopMovement()
+    {
+        isMoving = false;
     }
 
 }

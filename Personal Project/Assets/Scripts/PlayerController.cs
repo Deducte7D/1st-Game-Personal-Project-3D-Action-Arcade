@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,8 @@ public class PlayerController : MonoBehaviour
     public float gravityModifier;
     public bool gameOver = false;
     public MoveLeftBG movingGround;
-    
+    public DistanceCounter levelEndStatus;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         playerRb.useGravity = false;
+
         //Physics.gravity *= gravityModifier;
         //playerRb.AddForce(Vector3.down * gravityModifier * playerRb.mass, ForceMode.Force);
     }
@@ -59,10 +63,15 @@ public class PlayerController : MonoBehaviour
         Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
         playerRb.AddForce(customGravity, ForceMode.Acceleration);
 
-        float groundSpeed = movingGround.GetSpeed();
+        bool levelEnd = levelEndStatus.levelEnded;
 
-        Vector3 dragVelocity = Vector3.left * groundSpeed;
-        playerRb.MovePosition(playerRb.position + dragVelocity * Time.fixedDeltaTime);
+        if (!levelEnd){
+            float groundSpeed = movingGround.GetSpeed();
+
+            Vector3 dragVelocity = Vector3.left * groundSpeed;
+            playerRb.MovePosition(playerRb.position + dragVelocity * Time.fixedDeltaTime);
+        }
+        
 
     }
 
