@@ -1,0 +1,11 @@
+Model Information:
+* title:	Football Goal Post
+* source:	https://sketchfab.com/3d-models/football-goal-post-364cf6da76854862bfb77e650a80bd29
+* author:	kazma (https://sketchfab.com/kazma04280508)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Football Goal Post" (https://sketchfab.com/3d-models/football-goal-post-364cf6da76854862bfb77e650a80bd29) by kazma (https://sketchfab.com/kazma04280508) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

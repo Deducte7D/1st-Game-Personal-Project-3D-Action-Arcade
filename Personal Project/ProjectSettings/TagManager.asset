@@ -13,6 +13,7 @@ TagManager:
   - Border
   - EnemyT1
   - EnemyT2
+  - Keeper
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - EnemyT3Ori
   - Borders
   - EnemyBunshin
-  - 
+  - Keeper
   - 
   - 
   - 
