@@ -49,6 +49,6 @@ public class DistanceCounter : MonoBehaviour
         }
 
         // Optional: Trigger end UI or animations here
-        Debug.Log("Level Complete!");
+        Debug.Log("Make the Shot");
     }
 }

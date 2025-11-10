@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public MoveLeftBG movingGround;
     public DistanceCounter levelEndStatus;
 
+    public Vector3 playerMovement;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +37,8 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized;
         playerRb.AddForce(movement * speed);
+
+        playerMovement = movement;
 
         // Calculate movement speed (excluding vertical)
         float currentSpeed = movement.magnitude;

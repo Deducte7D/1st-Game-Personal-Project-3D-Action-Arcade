@@ -14,6 +14,9 @@ TagManager:
   - EnemyT1
   - EnemyT2
   - Keeper
+  - GoalArea
+  - NoGoalArea
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -29,9 +32,9 @@ TagManager:
   - Borders
   - EnemyBunshin
   - Keeper
-  - 
-  - 
-  - 
+  - GoalArea
+  - NoGoalArea
+  - Ground
   - 
   - 
   - 

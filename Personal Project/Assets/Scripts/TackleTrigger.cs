@@ -4,6 +4,10 @@ public class TackleTrigger : MonoBehaviour
 {
     public EnemyController enemy;
     public EnemyControllerT1 enemyT1;
+    public KeeperController keeper;
+
+    public float disableTrig = 0;
+    public bool canInitiateCI = true;
     //private Rigidbody radiusTrig;
 
 
@@ -11,6 +15,11 @@ public class TackleTrigger : MonoBehaviour
     {
         //radiusTrig = GetComponent<Rigidbody>();
         
+    }
+
+    private void Update()
+    {
+        canInitiateCI = keeper.canInitiateCI;
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,6 +45,19 @@ public class TackleTrigger : MonoBehaviour
             {
                 enemy.StartSlideTackle(transform.root); // send player transform as target
             }
+        }
+
+        // trigger intercept for closing in
+        if (other.CompareTag("Keeper") && disableTrig == 0 && canInitiateCI == true)
+        {
+            KeeperController keeper = other.GetComponent<KeeperController>();
+
+            if (keeper != null)
+            {
+                keeper.InitiateCloseIntercept(); // call intercept
+                disableTrig = 1;
+            }
+
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+//using static UnityEngine.GraphicsBuffer;
 
 
 public class EnemyControllerT3 : MonoBehaviour
@@ -330,11 +330,11 @@ public class EnemyControllerT3 : MonoBehaviour
         // Tremor Damage Area
         Collider[] hitPlayers = Physics.OverlapSphere(transform.position, landTremorRadius, damageableLayers);
 
-        foreach (Collider col in hitPlayers)
-        {
-            Debug.Log("Tremor hit: " + col.name);
-            // You can apply damage or knockback here
-        }
+        //foreach (Collider col in hitPlayers)
+        //{
+        //    Debug.Log("Tremor hit: " + col.name);
+        //    // You can apply damage or knockback here
+        //}
 
         //// Optional: play landing/tremor animation
         //anim.SetTrigger("Land");
