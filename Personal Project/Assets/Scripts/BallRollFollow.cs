@@ -3,9 +3,12 @@ using UnityEngine;
 public class BallRollFollow : MonoBehaviour
 {
     public KeeperController keeperScript;
+    public GameObject Keeper;
+
+    public SpawnManagerV2 spawnScript;
 
     public Transform feetTarget; // assign the FeetTarget transform
-    public Transform CatchTarget;
+    public GameObject CatchTarget; // not used for prefab
     public Rigidbody ballRb;
 
     public float followForce = 10f;
@@ -17,6 +20,7 @@ public class BallRollFollow : MonoBehaviour
     public bool isKeeperIntercept = false;
     public bool isIntercepted = false;
     public bool isIntercepting = false;
+    public bool checkKeeperSpawn;
 
     private float shootPower = 0f;
     private float maxShootPower = 300f;
@@ -32,11 +36,23 @@ public class BallRollFollow : MonoBehaviour
     void Start()
     {
         ballRb = GetComponent<Rigidbody>();
+        SpawnManagerV2 spawnScript = GetComponent<SpawnManagerV2>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        checkKeeperSpawn = spawnScript.isKeeperInstanced;
+
+        if (checkKeeperSpawn)
+        {
+            Keeper = GameObject.Find("Keeper_Prefab(Clone)");
+            keeperScript = Keeper.GetComponent<KeeperController>();
+            CatchTarget = GameObject.FindWithTag("CatchTarget");
+        }
+
+        
+
         //// Direction from ball to feet target
         //Vector3 direction = (feetTarget.position - transform.position);
         //direction.y = 0f; // optional: ignore vertical offset for grounded movement
@@ -68,11 +84,11 @@ public class BallRollFollow : MonoBehaviour
 
         isCatched = keeperScript.isCaught;
 
-        if (isReleased && isCatched && CatchTarget != null)
+        if (isReleased && isCatched && CatchTarget.transform.position != null)
         {
             //Stick to keeper hand
             // Match position exactly
-            transform.position = CatchTarget.position;
+            transform.position = CatchTarget.transform.position;
             ballRb.angularVelocity = Vector3.zero;
             followForce = 0f;
             spinForce = 0f;
@@ -88,9 +104,11 @@ public class BallRollFollow : MonoBehaviour
         {
             // release constraints first (ball initial constrainst are released), and release from snapping position
             // reposition after intercept fully executed
+            
             if (isIntercepted)
             {
-                transform.position = CatchTarget.position;
+                transform.position = CatchTarget.transform.position;
+                // Debug.Log("Position of the catch targert: " + CatchTarget.transform.position);
                 ballRb.angularVelocity = Vector3.zero;
                 followForce = 0f;
                 spinForce = 0f;

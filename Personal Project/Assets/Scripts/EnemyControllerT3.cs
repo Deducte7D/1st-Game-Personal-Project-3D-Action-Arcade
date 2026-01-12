@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static ObjectPooler;
+using static UnityEngine.GraphicsBuffer;
 //using static UnityEngine.GraphicsBuffer;
 
 
@@ -11,9 +13,11 @@ public class EnemyControllerT3 : MonoBehaviour
     private Rigidbody enemyRb;
     private Animator enemyAnim;
     public float rotationSpeed = 500f;
-    public float followForce = 2100f;
+    public float cacheFollowForce = 2500f; // stay and increase
+    public float followForce = 2500f;
     //public float spinForce = 50f;
-    public Transform feetTarget; // assign the FeetTarget transform
+    public GameObject feetTarget; // assign the FeetTarget transform
+    public GameObject plane;
     public float tackleForce = 20000f;
     public float tackleCooldown = 3f;
     private bool canTackle = true;
@@ -32,19 +36,29 @@ public class EnemyControllerT3 : MonoBehaviour
 
     public float smashSpeed = 100f;
     public float jumpForce = 5000f;
-    public float landTremorRadius = 5f;
     public float jumpDelay = 0f;
-    public LayerMask damageableLayers;
+    public float landDelay;
+    
     public bool isJumping = false;
     //public Animator anim;
 
     private bool isSageMode = false;
     public bool isSpecialing = false;
-    public float specialDelay = 0f;
+    public float specialDelay = 5f;
 
     public GameObject bunshinPrefab1;
     public GameObject bunshinPrefab2;
 
+    // Variables for tremor
+    public float landTremorRadius = 5f;
+    public int maxDamage = 50;
+    public float knockForce = 15f;
+    public float upwardForce = 5f;
+    public float rippleSpeed = 25f;
+    public LayerMask damageableLayers;
+
+    public BunshinPoolManager bunshinPool;
+    public SlowMoController slowMoScript;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -54,14 +68,46 @@ public class EnemyControllerT3 : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         startTimeScale = Time.timeScale;
         startFixedDeltaTime = Time.fixedDeltaTime;
+        feetTarget = GameObject.FindWithTag("Player"); // assign target at runtime for prefab
+        plane = GameObject.FindWithTag("Ground"); 
+        movingGround = plane.GetComponent<MoveLeftBG>(); // reassign for prefab
 
         enemyRb.useGravity = false;
-        //enemyRb.AddForce(Vector3.down * gravityModifier * enemyRb.mass, ForceMode.Force);
+        //bunshinRb.AddForce(Vector3.down * gravityModifier * bunshinRb.mass, ForceMode.Force);
+    }
+
+    void OnEnable()
+    {
+        // attack are recurring already prob do not need.
+        // but to prevent enemybunshin disable visual bug, better reset attack routine
+        // should be on tacketriggerT3.cs
+        followForce = cacheFollowForce;
+        canTackle = true;
+        isOnGround = true;
+        isJumping = false;
+        isTackling = false;
+        isSlide = false;
+        isSageMode = false;
+        isSpecialing = false;
+}
+
+    private void OnDisable()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (slowMoScript == null)
+        {
+            slowMoScript = FindFirstObjectByType<SlowMoController>();
+        }
+
+        if (bunshinPool == null)
+        {
+            bunshinPool = FindFirstObjectByType<BunshinPoolManager>();
+        }
 
         if (!isSlide)
         {
@@ -87,7 +133,7 @@ public class EnemyControllerT3 : MonoBehaviour
         //if (!isTackling && !isSlide)
         {
             // Direction from enemy to feet target
-            Vector3 direction = (feetTarget.position - transform.position);
+            Vector3 direction = (feetTarget.transform.position - transform.position);
             direction.y = 0f; // optional: ignore vertical offset for grounded movement
 
             // Apply force to follow the feet
@@ -154,7 +200,7 @@ public class EnemyControllerT3 : MonoBehaviour
         yield return new WaitForSeconds(specialDelay);
 
         // Optional: disable gravity or control physics
-        // enemyRb.useGravity = false;
+        // bunshinRb.useGravity = false;
         applyLocalGravity = false;
 
         Vector3 resetcustomGravity = Vector3.down * 0;
@@ -213,17 +259,29 @@ public class EnemyControllerT3 : MonoBehaviour
 
             // --- Spawn clones while floating ---
             spawnTimer += Time.deltaTime;
-            if (spawnedCount < totalClones && spawnTimer >= spawnInterval)
+            if (spawnedCount < totalClones && spawnTimer >= spawnInterval) // ngl the second condition is pelik
             {
                 spawnTimer = 0f;
 
+                //Vector3 spawnPos = transform.position +
+                //                   new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
+
+                //// Pick randomly between two prefabs
+                //GameObject prefabToSpawn = (Random.value < 0.4f) ? bunshinPrefab1 : bunshinPrefab2;
+
+                //Instantiate(prefabToSpawn, spawnPos, transform.rotation);
+
+                // Spawn from bunshin pool
                 Vector3 spawnPos = transform.position +
                                    new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
 
-                // Pick randomly between two prefabs
-                GameObject prefabToSpawn = (Random.value < 0.4f) ? bunshinPrefab1 : bunshinPrefab2;
+                string[] enemyTypes = { "EBunshinT1", "EBunshinT2" };
+                string chosenTypeSpawn = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Length)];
 
-                Instantiate(prefabToSpawn, spawnPos, transform.rotation);
+                // spawn method call
+
+                GameObject bunshin = bunshinPool.GetBunshin(chosenTypeSpawn, spawnPos, Quaternion.identity);
+
 
                 spawnedCount++;
             }
@@ -240,7 +298,7 @@ public class EnemyControllerT3 : MonoBehaviour
         //yield return new WaitForSeconds(0f);
 
         //// Restore original constraints
-        //enemyRb.constraints = originalConstraints;
+        //bunshinRb.constraints = originalConstraints;
 
         // spawns bunshin
         // stay that position until 1,2,3 (total 6) bunshin is spawned
@@ -269,9 +327,9 @@ public class EnemyControllerT3 : MonoBehaviour
         // reset normal run
         // enable gravity back
         enemyRb.WakeUp();
-        //enemyRb.useGravity = true;
+        //bunshinRb.useGravity = true;
         //Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
-        //enemyRb.AddForce(customGravity, ForceMode.Acceleration);
+        //bunshinRb.AddForce(customGravity, ForceMode.Acceleration);
         applyLocalGravity = true;
 
         // Animate based on Rigidbody velocity (horizontal only)
@@ -315,20 +373,30 @@ public class EnemyControllerT3 : MonoBehaviour
         enemyAnim.SetFloat("Speed_f", currentSpeed);
         followForce = 2100f;
 
+        // smooth direction and correct distance update
+
         // Jump toward player's last position
-        Vector3 direction = (targetPosition - transform.position).normalized;
+        // Vector3 direction = (targetPosition - transform.position).normalized;
+        Vector3 toTarget = targetPosition - transform.position;
+        Vector3 direction = toTarget.normalized;
+        float distance = toTarget.magnitude;
+
         direction.y = 1f; // Add upward force for the jump arc
 
         enemyRb.linearVelocity = Vector3.zero; // Reset any current velocity
-        enemyRb.AddForce(direction * jumpForce, ForceMode.Impulse);
+        // enemyRb.AddForce(direction * jumpForce, ForceMode.Impulse);
+        enemyRb.AddForce(direction * distance * jumpForce);
 
         // Wait for landing
-        yield return new WaitForSeconds(1.5f); // Adjust timing based on jump length
+        yield return new WaitForSeconds(landDelay); // Adjust timing based on jump length
 
         enemyRb.linearVelocity = Vector3.down * smashSpeed; // instantly smash
 
+        // Call Tremor
+        DoLandTremor();
+
         // Tremor Damage Area
-        Collider[] hitPlayers = Physics.OverlapSphere(transform.position, landTremorRadius, damageableLayers);
+        // Collider[] hitPlayers = Physics.OverlapSphere(transform.position, landTremorRadius, damageableLayers);
 
         //foreach (Collider col in hitPlayers)
         //{
@@ -350,6 +418,56 @@ public class EnemyControllerT3 : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, landTremorRadius);
+    }
+
+    public void DoLandTremor()
+    {
+        // Camera shake happens ONCE
+        //CameraShake.Shake(0.3f, 0.5f);
+
+        Collider[] hitPlayers = Physics.OverlapSphere(
+            transform.position,
+            landTremorRadius,
+            damageableLayers
+        );
+
+        foreach (Collider col in hitPlayers)
+        {
+            float dist = Vector3.Distance(transform.position, col.transform.position);
+
+            // Delay based on distance transfers to ripple effect
+            float delay = dist / rippleSpeed;
+
+            StartCoroutine(ApplyTremorWithDelay(col, dist, delay));
+        }
+    }
+
+    private IEnumerator ApplyTremorWithDelay(Collider col, float dist, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // Damage falloff
+        float damagePercent = 1 - (dist / landTremorRadius); // basically further away from radius = lower percentage dmg taken
+        int finalDamage = Mathf.RoundToInt(maxDamage * damagePercent);
+
+        // Apply damage
+        PlayerHealth hp = col.GetComponent<PlayerHealth>();
+        if (hp != null)
+            hp.TakeDamage(finalDamage);
+
+        // Apply force (tremor feel)
+        Rigidbody rb = col.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Vector3 dir = (col.transform.position - transform.position).normalized;
+            dir.y = 0f;
+
+            Vector3 force = dir * knockForce + Vector3.up * upwardForce;
+            rb.AddForce(force, ForceMode.Impulse);
+        }
+
+        // basically later for visual effects, the tremor effect will be seen at the same time the player is dmged (sync), so it depends on the distance to determine the speed/delay.
+        // AND make sure to have the visual do 1 then 2 wave first and 3rd will hit, therefore there's timing there real bad bussiness this dirty work
     }
 
     private void StartSlowMotion()
@@ -385,10 +503,10 @@ public class EnemyControllerT3 : MonoBehaviour
 
         enemyRb.linearVelocity = Vector3.zero; // Stop previous momentum
         enemyRb.AddForce(tackleDir * tackleForce, ForceMode.Impulse);
-        StartSlowMotion();
-        //enemyRb.mass = 30f;
+        slowMoScript.StartSlowMotion(tackleCooldown); // currently 1 sec
+        //bunshinRb.mass = 30f;
         //playerAnim.speed = 0.6f; // slows animation to give heavy feel
-        //enemyRb.linearDamping = 3f;     // add this temporarily if needed
+        //bunshinRb.linearDamping = 3f;     // add this temporarily if needed
         //playerAnim.SetTrigger("Tackle_trig");
         enemyAnim.SetBool("Tackle_bool", true);
 
@@ -418,9 +536,9 @@ public class EnemyControllerT3 : MonoBehaviour
 
         // Wait extra delay before allowing next tackle
         float standDelay = 2f; // seconds to stand up before next tackle
-        EndSlowMotion();
-        //enemyRb.linearDamping = 2f;     // add this temporarily if needed
-        //enemyRb.mass = 70f;
+        //EndSlowMotion();
+        //bunshinRb.linearDamping = 2f;     // add this temporarily if needed
+        //bunshinRb.mass = 70f;
         //playerAnim.speed = 1f; // slows animation to give heavy feel
         yield return new WaitForSeconds(standDelay);
 
@@ -438,8 +556,16 @@ public class EnemyControllerT3 : MonoBehaviour
     //private System.Collections.IEnumerator DelayAction(float delay)
     //{
     //    yield return new WaitForSeconds(delay);
-        
+
 
     //}
+
+    public void DeathHandlerT3()
+    {
+        // smoke effect = dead visualization
+
+        // disable T3
+        gameObject.SetActive(false);
+    }
 
 }

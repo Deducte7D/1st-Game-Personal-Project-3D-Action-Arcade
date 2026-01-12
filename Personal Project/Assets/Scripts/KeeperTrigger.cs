@@ -7,6 +7,7 @@ public class KeeperTrigger : MonoBehaviour
     public KeeperController keeper;
     //public BallRollFollow ballShootFx;
     public BallRollFollow ballrollfollowScript;
+    public GameObject ball; // assign the ballTarget transform
 
     public bool isLanded;
     public bool isDiving;
@@ -14,12 +15,13 @@ public class KeeperTrigger : MonoBehaviour
 
     //private float shootPower = 0f;
 
-    public Transform Ball; // assign the ballTarget transform
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // assigns for runtime for prefab
+        ball = GameObject.FindWithTag("Ball");
+        ballrollfollowScript = ball.GetComponent<BallRollFollow>();
+
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class KeeperTrigger : MonoBehaviour
     {
         bool toDive = ballrollfollowScript.isReleased;
 
-        Vector3 targetBall = Ball.position;
+        Vector3 targetBall = ball.transform.position;
 
         if (toDive == true)
         {

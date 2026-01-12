@@ -3,21 +3,44 @@ using UnityEngine;
 
 public class PlayerHitbox : MonoBehaviour
 {
+    private PlayerHealth playerHP;
+
     //public int tackleHits = 0;
     public bool isHit = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        playerHP = GetComponent<PlayerHealth>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HitBoxT3"))
         {
+            playerHP.TakeDamage(50); //boss deals 50% player's hp
             isHit = true;
             Debug.Log("Hit");
+
+            // Reset hit after value of WaitForSeconds second
+            StartCoroutine(ResetHit());
+        }
+
+        if (other.CompareTag("EnemyT1"))
+        {
+            playerHP.TakeDamage(30); // 100hp , 30/33dmg for 3 times and lef twith 10/1hp, so player may live 4 hits
+            isHit = true;
+            Debug.Log("Hit by T1");
+
+            // Reset hit after value of WaitForSeconds second
+            StartCoroutine(ResetHit());
+        }
+
+        if (other.CompareTag("EnemyT2"))
+        {
+            playerHP.TakeDamage(30); // 100hp , 30/33dmg for 3 times and lef twith 10/1hp, so player may live 4 hits
+            isHit = true;
+            Debug.Log("Hit by T2");
 
             // Reset hit after value of WaitForSeconds second
             StartCoroutine(ResetHit());

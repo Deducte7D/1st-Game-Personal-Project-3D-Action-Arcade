@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody enemyRb;
     private Animator playerAnim;
     public float rotationSpeed = 500f;
-    public float followForce = 1550f;
+    public float followForce = 2050f;
     //public float spinForce = 50f;
     public Transform feetTarget; // assign the FeetTarget transform
     public float tackleForce = 5000f;
@@ -24,12 +24,26 @@ public class EnemyController : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
-        //enemyRb.AddForce(Vector3.down * gravityModifier * enemyRb.mass, ForceMode.Force);
+        //bunshinRb.AddForce(Vector3.down * gravityModifier * bunshinRb.mass, ForceMode.Force);
         feetTarget = GameObject.Find("FeetTarget").transform;
         if (movingGround == null)
         {
             movingGround = FindFirstObjectByType<MoveLeftBG>();
         }
+    }
+
+    void OnEnable()
+    {
+        // attack are recurring already prob do not need
+        isTackling = false;
+        isSlide = false;
+        canTackle = true;
+        
+    }
+
+    private void OnDisable()
+    {
+
     }
 
     // Update is called once per frame
@@ -134,5 +148,6 @@ public class EnemyController : MonoBehaviour
         playerAnim.SetBool("Crouch_up", false);
         
     }
+
 
 }

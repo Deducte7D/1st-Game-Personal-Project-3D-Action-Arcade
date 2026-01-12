@@ -3,12 +3,15 @@ using System.Collections;
 
 public class TackleTriggerT3 : MonoBehaviour
 {
-    public EnemyControllerT3 enemy;
+    public GameObject PlayerHitBox;
+    private PlayerHitbox playerHitboxScript;
+
+
     public bool noMoreTackle = false;
     public int maxCount = 0;
-    private PlayerHitbox playerHitboxScript;
+    
     //private Rigidbody radiusTrig;
-    public GameObject otherObject;
+    
 
     public enum AttackPhase { Tackle, Jump, Special}
     public AttackPhase currentPhase = AttackPhase.Tackle; //AttackPhase.Tackle
@@ -18,39 +21,49 @@ public class TackleTriggerT3 : MonoBehaviour
     private int specialMisses = 0;
     //private bool isStruck = false;
 
+    void OnEnable()
+    {
+        // attack are recurring already prob do not need.
+        // but to prevent enemybunshin disable visual bug, better reset attack routine
+        // should be on tacketriggerT3.cs
 
+        currentPhase = AttackPhase.Tackle; // reset to current phase back to AttackPhase.Tackle
+
+        // can comment if needed for testing later
+    }
 
     void Start()
     {
         //radiusTrig = GetComponent<Rigidbody>();
-        ;
 
         // Assume ScriptA is on the same GameObject
         //playerHitboxScript = GetComponent<PlayerHitbox>();
-        playerHitboxScript = otherObject.GetComponent<PlayerHitbox>();
+        playerHitboxScript = PlayerHitBox.GetComponent<PlayerHitbox>();
+        
 
         // Or if it's on another object (drag in via Inspector)
         // public GameObject otherObject;
         // scriptARef = otherObject.GetComponent<ScriptA>();
 
-
     }
 
-    
-
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) // other is other than the collider itself that attached to this obj/script (its considered as a component just like in inspector)
     {
+        
         //Debug.Log("Trigger entered by: " + other.name);
         //int counts = playerHitboxScript.tackleHits; //read hits count
         bool isStruck = playerHitboxScript.isHit;
 
         if (!other.CompareTag("WifeEnemy")) return;
 
+        EnemyControllerT3 enemyT3 = other.GetComponent<EnemyControllerT3>();
+        if (enemyT3 == null) return;
+
         switch (currentPhase)
         {
             case AttackPhase.Tackle:
                 
-                bool isSpecialPending = enemy.isSpecialing;
+                bool isSpecialPending = enemyT3.isSpecialing;
                 if (!noMoreTackle && !isStruck && !isSpecialPending)
                 {
                     EnemyControllerT3 enemy = other.GetComponent<EnemyControllerT3>();
@@ -72,10 +85,10 @@ public class TackleTriggerT3 : MonoBehaviour
 
             case AttackPhase.Jump:
 
-                bool isJumpingPending = enemy.isJumping;
+                bool isJumpingPending = enemyT3.isJumping;
                 if (!isStruck && !isJumpingPending)
                 {
-                    enemy.InitiateJumpAttack(transform.position);
+                    enemyT3.InitiateJumpAttack(transform.position);
                     jumpMisses++;
 
                     if(jumpMisses >= 1) //2 times
@@ -90,7 +103,7 @@ public class TackleTriggerT3 : MonoBehaviour
             case AttackPhase.Special:
                 if (!isStruck)
                 {
-                    enemy.InitiateSpecialAttack(transform.position, transform);
+                    enemyT3.InitiateSpecialAttack(transform.position, transform);
                     specialMisses++;
                     
 

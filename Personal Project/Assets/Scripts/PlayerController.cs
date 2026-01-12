@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 playerMovement;
 
+    private bool inputMovement = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,31 +35,34 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized;
-        playerRb.AddForce(movement * speed);
-
-        playerMovement = movement;
-
-        // Calculate movement speed (excluding vertical)
-        float currentSpeed = movement.magnitude;
-        playerAnim.SetFloat("Speed_f", currentSpeed);
-
-        //rotate face direction
-        if (movement != Vector3.zero)
+        if (inputMovement)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized;
+            playerRb.AddForce(movement * speed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround /*&& !gameOver*/)
-        {
-            //playerAudio.PlayOneShot(jumpSound, 1.0f);
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
-            playerAnim.SetTrigger("Jump_trig");
-            //dirtParticle.Stop();
+            playerMovement = movement;
+
+            // Calculate movement speed (excluding vertical)
+            float currentSpeed = movement.magnitude;
+            playerAnim.SetFloat("Speed_f", currentSpeed);
+
+            //rotate face direction
+            if (movement != Vector3.zero)
+            {
+                Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && isOnGround /*&& !gameOver*/)
+            {
+                //playerAudio.PlayOneShot(jumpSound, 1.0f);
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+                playerAnim.SetTrigger("Jump_trig");
+                //dirtParticle.Stop();
+            }
         }
 
     }
@@ -97,6 +102,51 @@ public class PlayerController : MonoBehaviour
         //    explosionParticle.Play();
         //    dirtParticle.Stop();
         //}
+    }
+
+    public void DeathHandler()
+    {
+        // --- Slow Motion ---
+        StartCoroutine(SlowMotionDeath());
+
+        // --- PHYSICS CHANGES ---
+
+        // Reduce weight/mass
+        playerRb.mass = 0.3f;
+
+        // Remove drag (damping)
+        playerRb.linearDamping = 0f;
+        playerRb.angularDamping = 0f;
+
+        // Remove rotation constraints
+        playerRb.constraints = RigidbodyConstraints.None;
+
+
+        // disable animation
+        // playerAnim.enabled = false;
+        playerAnim.SetFloat("Speed_f", 0f);
+        playerAnim.SetInteger("Animation_int",9);
+
+        // --- DISABLE PLAYER CONTROL ---
+        //if (this != null)
+        //    this.enabled = false;
+        inputMovement = false;
+
+        Debug.Log("Player died - physics + control changed + slow mo");
+    }
+
+    private IEnumerator SlowMotionDeath()
+    {
+        // Slow down time
+        Time.timeScale = 0.2f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+        // Stay slow for 1.5 seconds (real time)
+        yield return new WaitForSecondsRealtime(1.5f); // why use waitforsecondsrealtime, ignores timescale
+
+        // Return to normal speed
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
     }
 
 }

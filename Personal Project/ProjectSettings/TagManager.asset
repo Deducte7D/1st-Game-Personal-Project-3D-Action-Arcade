@@ -17,6 +17,17 @@ TagManager:
   - GoalArea
   - NoGoalArea
   - Ball
+  - BubShield
+  - LightSpeed
+  - SmokeDupe
+  - SlowPuddle
+  - GroundUnwinged
+  - EggsEnemy
+  - ShieldObj
+  - Bunshin
+  - CatchTarget
+  - BunshinHitBox
+  - BunshinPooler
   layers:
   - Default
   - TransparentFX
@@ -35,13 +46,13 @@ TagManager:
   - GoalArea
   - NoGoalArea
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PowerUps
+  - AntiPowerUps
+  - Bunshin
+  - PublicEnemy
+  - BorderPlayer
+  - BorderSpawn
+  - BunshinHitBox
   - 
   - 
   - 

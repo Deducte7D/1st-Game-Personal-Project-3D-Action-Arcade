@@ -24,12 +24,26 @@ public class EnemyControllerT1 : MonoBehaviour
     {
         enemyRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
-        //enemyRb.AddForce(Vector3.down * gravityModifier * enemyRb.mass, ForceMode.Force);
+        //bunshinRb.AddForce(Vector3.down * gravityModifier * bunshinRb.mass, ForceMode.Force);
         feetTarget = GameObject.Find("FeetTarget").transform;
         if (movingGround == null)
         {
             movingGround = FindFirstObjectByType<MoveLeftBG>();
         }
+    }
+
+    void OnEnable()
+    {
+        // attack are recurring already prob do not need
+        isTackling = false;
+        isSlide = false;
+        canTackle = true;
+
+    }
+
+    private void OnDisable()
+    {
+
     }
 
     // Update is called once per frame
@@ -122,7 +136,7 @@ public class EnemyControllerT1 : MonoBehaviour
 
         StartCoroutine(DisableAfterDelay(gameObject, 2.5f));
     }
-
+    
     // Reset Coroutine
     private System.Collections.IEnumerator ResetTackle(float delay)
     {
@@ -136,10 +150,14 @@ public class EnemyControllerT1 : MonoBehaviour
 
     }
 
+    // disable gameobject after tackle and a few delay
     private System.Collections.IEnumerator DisableAfterDelay(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
-        obj.SetActive(false);
+        obj.SetActive(false); 
     }
 
 }
+
+// Comment reset tackle function
+// T1 enemy poof after 1 tackle

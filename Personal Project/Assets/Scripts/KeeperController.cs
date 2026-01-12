@@ -6,7 +6,7 @@ public class KeeperController : MonoBehaviour
     private Rigidbody KeeperRb;
     private Animator KeeperAnim;
 
-    public Transform feetTarget;
+    public GameObject feetTarget;
 
     public float moveSpeed;
     public float landSpeed;
@@ -35,7 +35,8 @@ public class KeeperController : MonoBehaviour
     public float closeInterceptDelay;
     public float GroundLayDelay;
 
-    public Transform Ball; // assign the FeetTarget transform
+    public GameObject Ball; // assign the FeetTarget transform
+    public GameObject Player;
     public PlayerController playercontrollerScript;
 
     public BallRollFollow ballrollfollowScript;
@@ -48,6 +49,13 @@ public class KeeperController : MonoBehaviour
         KeeperAnim.SetBool("Static_b", false);
 
         KeeperRb.useGravity = false;
+
+        feetTarget = GameObject.FindWithTag("Player");
+        Ball = GameObject.FindWithTag("Ball");
+        ballrollfollowScript = Ball.GetComponent<BallRollFollow>();
+        Player = GameObject.FindWithTag("Player");
+        playercontrollerScript = Player.GetComponent<PlayerController>();
+        
     }
 
     // Update is called once per frame
@@ -107,7 +115,7 @@ public class KeeperController : MonoBehaviour
                 Vector3 rotation2player = playercontrollerScript.playerMovement;
                 rotation2player.x = -rotation2player.x;
 
-                Vector3 rotation2ball = Ball.position;
+                Vector3 rotation2ball = Ball.transform.position;
 
                 // make sure facing only the left side
                 if (rotation2player.x > 0)
@@ -143,7 +151,7 @@ public class KeeperController : MonoBehaviour
                 if (!isDiving)
                 {
                     // Direction from enemy to feet target
-                    Vector3 direction = (Ball.position - transform.position);
+                    Vector3 direction = (Ball.transform.position - transform.position);
                     direction.y = 0f; // optional: ignore vertical offset for grounded movement
                     direction.x = 0f;
 
@@ -176,7 +184,7 @@ public class KeeperController : MonoBehaviour
         yield return new WaitForSeconds(divingDelay);
 
         // Optional: disable gravity or control physics
-        // enemyRb.useGravity = false;
+        // bunshinRb.useGravity = false;
         // applyLocalGravity = false;
 
         Vector3 resetcustomGravity = Vector3.down * 0;
@@ -313,13 +321,14 @@ public class KeeperController : MonoBehaviour
     // allow keeper to dash to player when too close
     IEnumerator CloseInterceptRoutine()
     {
+
         // 3. release keeper from a few position constraints
         KeeperRb.constraints = RigidbodyConstraints.None;
         KeeperRb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionY;
         //  (if want grounded only)
 
         // 1. access ball position
-        Vector3 interceptPosition = feetTarget.position;
+        Vector3 interceptPosition = feetTarget.transform.position;
 
         Vector3 interceptDirection = (interceptPosition - transform.position);
 
