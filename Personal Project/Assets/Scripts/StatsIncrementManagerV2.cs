@@ -1,7 +1,6 @@
 using UnityEngine;
 
-// reason why other obj's stats not updating is because the reference is only instance of the first obj spawn/pooled
-public class StatsIncrementManager : MonoBehaviour
+public class StatsIncrementManagerV2 : MonoBehaviour
 {
 
     [SerializeField] private PlayerController playerController;
@@ -30,7 +29,7 @@ public class StatsIncrementManager : MonoBehaviour
     public Stats tier2Stats;
     public Stats tier3Stats;
     public Stats keeperStats;
-    
+
 
     // float currentWaveCount, tempWaveCount;
 
@@ -74,7 +73,7 @@ public class StatsIncrementManager : MonoBehaviour
         currentLevelCount = 1;
 
     }
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -117,7 +116,7 @@ public class StatsIncrementManager : MonoBehaviour
 
     public void PlayerIncrementStats(float waveCount, float levelCount)
     {
- 
+
         //tempLevelCount = levelCount; // store temp value
         //currentLevelCount = tempLevelCount; // store value to not root with compared variable
 
@@ -125,7 +124,7 @@ public class StatsIncrementManager : MonoBehaviour
         localLevelCounter += 1;
         holdLevelCounter = 1;
 
-        
+
         if (levelCount > currentLevelCount) // only level up then increase stats
         {
             currentLevelCount = levelCount;
@@ -138,87 +137,47 @@ public class StatsIncrementManager : MonoBehaviour
                 holdLevelCounter += 2; // match the localLeverCounter to reset difference
                 spawnManagerV2.objectsPerWave += 1; // increase spawnunits in spawnmanager
             }
-            
+
         }
 
     }
 
     //public void EnemyT1IncrementStats(float waveCount, float levelCount)
     //{
-
-    //    //tempLevelCount = levelCount; // store temp value
-    //    //currentLevelCount = tempLevelCount; // store value to not root with compared variable
-
-    //    if (levelCount > currentLevelCount) // only level up then increase stats
-    //    {
-    //        currentLevelCount = levelCount;
-
-    //        enemyControllerT1.followForce += tier1Stats.speed;
-    //        enemyControllerT1.tackleForce += tier1Stats.tackle;
-    //        enemyControllerT1.tackleCooldown += tier1Stats.tackleCooldown;
-    //    }
+    //    float level = levelCount;
+    //    enemyControllerT1.followForce = enemyControllerT1.followForce + (100 * level);
+    //    enemyControllerT1.tackleForce = enemyControllerT1.tackleForce + (100 * level);
+    //    enemyControllerT1.tackleCooldown = enemyControllerT1.tackleCooldown + (-0.1f * level);
     //}
 
     //public void EnemyT2IncrementStats(float waveCount, float levelCount)
     //{
-
-    //    //tempLevelCount = levelCount; // store temp value
-    //    //currentLevelCount = tempLevelCount; // store value to not root with compared variable
-
-    //    if (levelCount > currentLevelCount) // only level up then increase stats
-    //    {
-    //        currentLevelCount = levelCount;
-
-    //        enemyControllerT2.followForce += tier2Stats.speed;
-    //        enemyControllerT2.tackleForce += tier2Stats.tackle;
-    //        enemyControllerT2.tackleCooldown += tier2Stats.tackleCooldown;
-    //    }
+    //    float level = levelCount;
+    //    enemyControllerT2.followForce = enemyControllerT2.followForce + (150 * level);
+    //    enemyControllerT2.tackleForce = enemyControllerT2.tackleForce + (50 * level);
+    //    enemyControllerT2.tackleCooldown = enemyControllerT2.tackleCooldown + (-0.1f * level);
     //}
 
     //public void EnemyT3IncrementStats(float waveCount, float levelCount)
     //{
-
-    //    //tempLevelCount = levelCount; // store temp value
-    //    //currentLevelCount = tempLevelCount; // store value to not root with compared variable
-
-    //    if (levelCount > currentLevelCount) // only level up then increase stats
-    //    {
-    //        currentLevelCount = levelCount;
-
-    //        enemyControllerT3.cacheFollowForce += tier3Stats.speed;
-    //        enemyControllerT3.tackleForce += tier3Stats.tackle;
-    //        healthT3.maxHealth += tier3Stats.health;
-    //    }
+    //    float level = levelCount;
+    //    enemyControllerT3.followForce = enemyControllerT3.followForce + (150 * level);
+    //    enemyControllerT3.tackleForce = enemyControllerT3.tackleForce + (50 * level);
+    //    healthT3.maxHealth = (int)(healthT3.maxHealth + (150 * level));
     //}
 
     //public void KeeperIncrementStats(float waveCount, float levelCount)
     //{
-
-    //    //tempLevelCount = levelCount; // store temp value
-    //    //currentLevelCount = tempLevelCount; // store value to not root with compared variable
-
-    //    if (levelCount > currentLevelCount) // only level up then increase stats
-    //    {
-    //        currentLevelCount = levelCount;
-
-    //        keeperController.followForce += keeperStats.speed;
-    //    }
+    //    float level = levelCount;
+    //    keeperController.followForce = keeperController.followForce + (30 * level);
     //}
 
     //public void BunshinIncrementStats(float waveCount, float levelCount)
     //{
-
-    //    //tempLevelCount = levelCount; // store temp value
-    //    //currentLevelCount = tempLevelCount; // store value to not root with compared variable
-
-    //    if (levelCount > currentLevelCount) // only level up then increase stats
-    //    {
-    //        currentLevelCount = levelCount;
-
-    //        bunshinController.followForce += bunshinStats.speed;
-    //        bunshinController.tackleForce += bunshinStats.tackle;
-    //        bunshinController.tackleCooldown += bunshinStats.tackleCooldown;
-    //    }
+    //    float level = levelCount;
+    //    bunshinController.followForce = enemyControllerT3.followForce + (30 * level);
+    //    bunshinController.tackleForce = enemyControllerT3.tackleForce + (50 * level);
+    //    //bunshinController.tackleCooldown = bunshinController.tackleCooldown + (-0.1f * level);
     //}
 
     //public void PUIncrementStats(float waveCount, float levelCount)

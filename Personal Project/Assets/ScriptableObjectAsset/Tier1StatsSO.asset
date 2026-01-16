@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d7670b01688354d95caf8aa6bf4563, type: 3}
+  m_Name: Tier1StatsSO
+  m_EditorClassIdentifier: Assembly-CSharp::Tier1StatsSO
+  speed: 1550
+  tackleForce: 10000
+  tackleCD: 3
+  speedPerLevel: 100
+  tackleForcePerLevel: 50
+  tackleCDPerLevel: -0.1

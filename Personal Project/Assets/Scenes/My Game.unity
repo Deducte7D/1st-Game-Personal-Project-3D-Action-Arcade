@@ -137,13 +137,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 500
-  followForce: 1550
   feetTarget: {fileID: 0}
-  tackleForce: 10000
-  tackleCooldown: 3
   isOnGround: 1
   movingGround: {fileID: 0}
   gravityModifier: 0
+  statsData: {fileID: 0}
 --- !u!1 &117540800
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +315,9 @@ MonoBehaviour:
   - key: EBunshinT2
     prefab: {fileID: 5911296682992654233, guid: 0187e027c09589546b2bf9c8ec8d0df9, type: 3}
     poolSize: 20
+  currentLevel: 1
+  enemyControllerT1: {fileID: 0}
+  enemyControllerT2: {fileID: 0}
 --- !u!4 &123985964
 Transform:
   m_ObjectHideFlags: 0
@@ -2294,42 +2295,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c0eb92558de7634a9668461b4acff3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StatsIncrementManager
+  playerController: {fileID: 1092593676}
+  bunshinController: {fileID: 0}
+  enemyControllerT1: {fileID: 0}
+  enemyControllerT2: {fileID: 0}
+  enemyControllerT3: {fileID: 0}
+  keeperController: {fileID: 0}
+  spawnManagerV2: {fileID: 1154938574}
+  healthT3: {fileID: 0}
   playerStats:
-    speed: 0
-    jump: 0
+    speed: 100
+    jump: 50
     tackle: 0
     tackleCooldown: 0
     unitsSpawn: 0
+    health: 0
   bunshinStats:
-    speed: 0
+    speed: 30
     jump: 0
-    tackle: 0
+    tackle: 50
     tackleCooldown: 0
     unitsSpawn: 0
+    health: 0
   tier1Stats:
-    speed: 0
-    jump: 0
+    speed: 100
+    jump: 100
     tackle: 0
-    tackleCooldown: 0
+    tackleCooldown: -0.1
     unitsSpawn: 0
+    health: 0
   tier2Stats:
-    speed: 0
+    speed: 150
     jump: 0
-    tackle: 0
-    tackleCooldown: 0
+    tackle: 50
+    tackleCooldown: -0.1
     unitsSpawn: 0
+    health: 0
   tier3Stats:
-    speed: 0
+    speed: 50
     jump: 0
-    tackle: 0
+    tackle: 1000
     tackleCooldown: 0
     unitsSpawn: 0
+    health: 150
   keeperStats:
-    speed: 0
+    speed: 30
     jump: 0
     tackle: 0
     tackleCooldown: 0
     unitsSpawn: 0
+    health: 0
 --- !u!4 &745054263
 Transform:
   m_ObjectHideFlags: 0
@@ -3599,14 +3614,16 @@ MonoBehaviour:
   PUPerWave: 0
   APUPerWave: 0
   SmokeDupeUnits: 3
-  numberSpawnBossGoal: 0
-  waveInterval: 1
+  numberSpawnBossGoal: 1
+  waveInterval: 2
   currentWaveCount: 1
-  currentLevelCount: 1
+  currentLevelCount: 0
   smokeDupeInterval: 5
   isAliveT3: 1
   isKeeperInstanced: 0
   pooler: {fileID: 2147363384}
+  statsIncrementManager: {fileID: 745054262}
+  levelUpdater: {fileID: 1592870029}
 --- !u!1 &1156869392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5095,6 +5112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592870028}
   - component: {fileID: 1592870027}
+  - component: {fileID: 1592870029}
   m_Layer: 0
   m_Name: GlobalEffectsManager
   m_TagString: Untagged
@@ -5129,6 +5147,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1592870029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592870026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88fc913ec851b4479ef6de824a33502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelUpdater
+  currentLevel: 0
 --- !u!1 &1645165721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6329,6 +6360,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6e64b291ff13445ac0328bce5afa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPooler
+  enemyControllerT1: {fileID: 0}
+  enemyControllerT2: {fileID: 0}
+  enemyControllerT3: {fileID: 0}
+  keeperController: {fileID: 0}
+  healthT3: {fileID: 0}
+  levelUpdater: {fileID: 1592870029}
+  currentLevel: 0
   pools:
   - poolName: T1S1Pool
     prefab: {fileID: 4960450484563428544, guid: c61f21dbfcd69bf48aa3798cbe093907, type: 3}
@@ -6340,7 +6378,7 @@ MonoBehaviour:
     prefab: {fileID: 6959965619178215052, guid: 3db8b24b2c1f0c54e98a67ee484c762e, type: 3}
     size: 9
   - poolName: T2S1Pool
-    prefab: {fileID: 4960450484563428544, guid: c61f21dbfcd69bf48aa3798cbe093907, type: 3}
+    prefab: {fileID: 3294774404510603157, guid: 3352751596aa6bb44a1eea6dbdc87610, type: 3}
     size: 9
   - poolName: T2S2Pool
     prefab: {fileID: 4417814051336881099, guid: 7d8d5f6817170004096c8d2087fe121f, type: 3}

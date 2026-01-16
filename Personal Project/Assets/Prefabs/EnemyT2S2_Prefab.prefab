@@ -1260,13 +1260,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 500
-  followForce: 2050
   feetTarget: {fileID: 0}
-  tackleForce: 10000
-  tackleCooldown: 3
   isOnGround: 1
   movingGround: {fileID: 0}
   gravityModifier: 0
+  statsData: {fileID: 11400000, guid: 8c36aada747e7ad41b4cba6e97b9149a, type: 2}
 --- !u!1 &5058406480805208390
 GameObject:
   m_ObjectHideFlags: 0

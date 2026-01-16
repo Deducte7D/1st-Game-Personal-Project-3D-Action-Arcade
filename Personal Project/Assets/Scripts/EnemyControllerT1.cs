@@ -6,11 +6,11 @@ public class EnemyControllerT1 : MonoBehaviour
     private Rigidbody enemyRb;
     private Animator playerAnim;
     public float rotationSpeed = 500f;
-    public float followForce = 1550f;
     //public float spinForce = 50f;
     public Transform feetTarget; // assign the FeetTarget transform
-    public float tackleForce = 5000f;
-    public float tackleCooldown = 3f;
+    //public float followForce = 1550f;
+    //public float tackleForce = 5000f;
+    //public float tackleCooldown = 3f;
     private bool canTackle = true;
     public bool isOnGround = true;
     public MoveLeftBG movingGround;
@@ -18,10 +18,38 @@ public class EnemyControllerT1 : MonoBehaviour
     private bool isTackling = false;
     private bool isSlide = false;
 
+    public Tier1StatsSO statsData;
+    private int currentLevel;
+
+    public float followForce { get; private set; }
+    public float tackleForce { get; private set; }
+    public float tackleCooldown { get; private set; }
+
+    public void Initialize(int level)
+    {
+        currentLevel = level;
+        followForce = statsData.GetSpeed(currentLevel);
+        tackleForce = statsData.GetTackleForce(currentLevel);
+        tackleCooldown = statsData.GetTackleCD(currentLevel);
+    }
+
+    //public void EnemyT1IncrementStats(float waveCount, float levelCount)
+    //{
+    //    float level = levelCount;
+    //    followForce = followForce + (100 * level);
+    //    tackleForce = tackleForce + (100 * level);
+    //    tackleCooldown = tackleCooldown + (-0.1f * level);
+    //}
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //if (statsData == null) 
+        //{ 
+        //    Debug.LogError("StatsData not assigned on " + gameObject.name);
+        //    return; 
+        //}
+
         enemyRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         //bunshinRb.AddForce(Vector3.down * gravityModifier * bunshinRb.mass, ForceMode.Force);

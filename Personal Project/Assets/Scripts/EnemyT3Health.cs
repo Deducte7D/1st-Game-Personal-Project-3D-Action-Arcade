@@ -12,6 +12,18 @@ public class EnemyT3Health : MonoBehaviour
     public UnityEvent<int, int> onHealthChanged; // current, max
     public UnityEvent onDeath;
 
+    public Tier3StatsSO statsData;
+
+    //private int currentLevel;
+
+    //public int maxHealth { get; private set; }
+
+    //public void Initialize(int level)
+    //{
+    //    currentLevel = level;
+    //    maxHealth = statsData.GetMaxHealth(currentLevel);
+    //}
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +33,12 @@ public class EnemyT3Health : MonoBehaviour
         currentHealth = maxHealth;
         if (onHealthChanged != null)
             onHealthChanged.Invoke(currentHealth, maxHealth);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        maxHealth = enemyT3Controller.maxHealth;
     }
 
     public void TakeDamageT3(int dmg)
@@ -57,11 +75,4 @@ public class EnemyT3Health : MonoBehaviour
             onHealthChanged.Invoke(currentHealth, maxHealth);
     }
 
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

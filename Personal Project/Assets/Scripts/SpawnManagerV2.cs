@@ -19,7 +19,7 @@ public class SpawnManagerV2 : MonoBehaviour
     [SerializeField] private int numberSpawnBossGoal = 1; // for Boss and Goal
     [SerializeField] private float waveInterval = 5f;
     [SerializeField] private float currentWaveCount = 1; // indefinite
-    [SerializeField] private float currentLevelCount = 1; // indefinite
+    [SerializeField] private float currentLevelCount = 0; // indefinite
 
     [SerializeField] private float smokeDupeInterval = 5f;
     [SerializeField] private bool isAliveT3 = true;
@@ -37,9 +37,17 @@ public class SpawnManagerV2 : MonoBehaviour
 
     public ObjectPooler pooler;
 
+    public StatsIncrementManager statsIncrementManager;
+
+    public LevelUpdater levelUpdater;
+
+    //public StatsIncrementManagerV2 statsIncrementManagerV2;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        levelUpdater.LevelUp();
+        currentLevelCount = levelUpdater.currentLevel;
         // bila nk start anjei 
         if (autoStart)
             StartSpawning(currentWaveCount, currentLevelCount);
@@ -51,6 +59,11 @@ public class SpawnManagerV2 : MonoBehaviour
         {
             isKeeperInstanced = true;
         }
+    }
+
+    private void Update()
+    {
+        currentLevelCount = levelUpdater.currentLevel;
     }
 
     public void StartSpawning(float waveCount, float levelCount)
@@ -86,6 +99,7 @@ public class SpawnManagerV2 : MonoBehaviour
     // use WS
     private IEnumerator WaveSpawner(float waveCount, float levelCount)
     {
+        currentLevelCount = levelCount;
         // for this section please recaliberate logic
         // bcos it seems weird but its following the algorithm needed
         while (currentWaveCount <= 7) // limit wave to 6 end and then level up
@@ -94,7 +108,7 @@ public class SpawnManagerV2 : MonoBehaviour
             {
                 for (int i = 0; i < objectsPerWave; i++)
                 {
-
+                    
                     // rework method call
                     // declare prefab variable, with sprites array list inside
                     // the declared prefab variable sprites are randomized first
@@ -221,7 +235,14 @@ public class SpawnManagerV2 : MonoBehaviour
 
                 // The wave reset and level counter
                 currentWaveCount = 1;
-                currentLevelCount++;
+                //currentLevelCount++;
+                levelUpdater.LevelUp();
+                statsIncrementManager.PlayerIncrementStats(currentWaveCount, currentLevelCount);
+                //statsIncrementManager.EnemyT1IncrementStats(currentWaveCount, currentLevelCount);
+                //statsIncrementManager.EnemyT2IncrementStats(currentWaveCount, currentLevelCount);
+                //statsIncrementManager.EnemyT3IncrementStats(currentWaveCount, currentLevelCount);
+                //statsIncrementManager.KeeperIncrementStats(currentWaveCount, currentLevelCount);
+                //statsIncrementManager.BunshinIncrementStats(currentWaveCount, currentLevelCount);
             }
 
 

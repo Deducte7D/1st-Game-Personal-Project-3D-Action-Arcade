@@ -11,9 +11,11 @@ public class BunshinController : MonoBehaviour
     private Animator playerAnim;
 
     public float rotationSpeed = 500f;
-    public float followForce; // used in method
+
     //public float spinForce = 50f;
-    public float tackleForce = 5000f;
+
+    //public float followForce; // used in method
+    //public float tackleForce = 5000f;
     public float tackleCooldown = 1.5f;
     public float startTackleDelay = 2f;
     public float gravityModifier = 12f;
@@ -52,6 +54,20 @@ public class BunshinController : MonoBehaviour
     public float maxKnockbackSpeed;
     public float maxChaseSpeed;
 
+    public BunshinStatsSO statsData;
+    private int currentLevel;
+
+    public float followForce { get; private set; }
+    public float tackleForce { get; private set; }
+    //public float tackleCooldown { get; private set; }
+
+    public void Initialize(int level)
+    {
+        currentLevel = level;
+        followForce = statsData.GetSpeed(currentLevel);
+        tackleForce = statsData.GetTackleForce(currentLevel);
+        //tackleCooldown = statsData.GetTackleCD(level);
+    }
 
     private void OnEnable()
     {
@@ -62,11 +78,11 @@ public class BunshinController : MonoBehaviour
 
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(bunshinRb.position, bunshinRb.position + bunshinRb.linearVelocity);
-    }
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawLine(bunshinRb.position, bunshinRb.position + bunshinRb.linearVelocity);
+    //}
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

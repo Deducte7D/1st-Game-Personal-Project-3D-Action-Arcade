@@ -13,12 +13,14 @@ public class EnemyControllerT3 : MonoBehaviour
     private Rigidbody enemyRb;
     private Animator enemyAnim;
     public float rotationSpeed = 500f;
-    public float cacheFollowForce = 2500f; // stay and increase
-    public float followForce = 2500f;
+    //public float cacheFollowForce = 2500f; // stay and increase
+    //public float followForce = 2500f;
+    //public float tackleForce = 20000f;
+
     //public float spinForce = 50f;
     public GameObject feetTarget; // assign the FeetTarget transform
     public GameObject plane;
-    public float tackleForce = 20000f;
+    
     public float tackleCooldown = 3f;
     private bool canTackle = true;
     public bool isOnGround = true;
@@ -46,8 +48,8 @@ public class EnemyControllerT3 : MonoBehaviour
     public bool isSpecialing = false;
     public float specialDelay = 5f;
 
-    public GameObject bunshinPrefab1;
-    public GameObject bunshinPrefab2;
+    //public GameObject bunshinPrefab1;
+    //public GameObject bunshinPrefab2;
 
     // Variables for tremor
     public float landTremorRadius = 5f;
@@ -60,6 +62,20 @@ public class EnemyControllerT3 : MonoBehaviour
     public BunshinPoolManager bunshinPool;
     public SlowMoController slowMoScript;
 
+    public Tier3StatsSO statsData;
+    private int currentLevel;
+
+    public float followForce { get; private set; }
+    public float tackleForce { get; private set; }
+    public int maxHealth { get; private set; }
+
+    public void Initialize(int level)
+    {
+        currentLevel = level;
+        followForce = statsData.GetSpeed(currentLevel);
+        tackleForce = statsData.GetTackleForce(currentLevel);
+        maxHealth = statsData.GetMaxHealth(currentLevel);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -81,7 +97,7 @@ public class EnemyControllerT3 : MonoBehaviour
         // attack are recurring already prob do not need.
         // but to prevent enemybunshin disable visual bug, better reset attack routine
         // should be on tacketriggerT3.cs
-        followForce = cacheFollowForce;
+        //followForce = cacheFollowForce;
         canTackle = true;
         isOnGround = true;
         isJumping = false;
@@ -281,7 +297,6 @@ public class EnemyControllerT3 : MonoBehaviour
                 // spawn method call
 
                 GameObject bunshin = bunshinPool.GetBunshin(chosenTypeSpawn, spawnPos, Quaternion.identity);
-
 
                 spawnedCount++;
             }

@@ -11,7 +11,7 @@ public class KeeperController : MonoBehaviour
     public float moveSpeed;
     public float landSpeed;
     public float rotationSpeed;
-    public float followForce;
+    //public float followForce;
     public float jumpForce;
     public float gravityModifier;
 
@@ -40,6 +40,17 @@ public class KeeperController : MonoBehaviour
     public PlayerController playercontrollerScript;
 
     public BallRollFollow ballrollfollowScript;
+
+    public KeeperStatsSO statsData;
+    private int currentLevel;
+
+    public float followForce { get; private set; }
+
+    public void Initialize(int level)
+    {
+        currentLevel = level;
+        followForce = statsData.GetSpeed(currentLevel);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

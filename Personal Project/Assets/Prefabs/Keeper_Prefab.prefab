@@ -1896,7 +1896,6 @@ MonoBehaviour:
   moveSpeed: 750
   landSpeed: 0
   rotationSpeed: 2000
-  followForce: 5000
   jumpForce: 5000
   gravityModifier: 7
   isGrounded: 1
@@ -1917,6 +1916,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   playercontrollerScript: {fileID: 0}
   ballrollfollowScript: {fileID: 0}
+  statsData: {fileID: 11400000, guid: 162b513173789fb4aa4bbd3501d7606f, type: 2}
 --- !u!114 &3353848236348415214
 MonoBehaviour:
   m_ObjectHideFlags: 0

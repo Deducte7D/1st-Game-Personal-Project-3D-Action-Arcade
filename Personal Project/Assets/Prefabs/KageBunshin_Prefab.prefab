@@ -1856,8 +1856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BunshinController
   rotationSpeed: 500
-  followForce: 1500
-  tackleForce: 5000
   tackleCooldown: 1.5
   startTackleDelay: 2
   gravityModifier: 0
@@ -1878,6 +1876,7 @@ MonoBehaviour:
     m_Bits: 0
   maxKnockbackSpeed: 12
   maxChaseSpeed: 6
+  statsData: {fileID: 11400000, guid: 0540ec3b5f498c64e9e91db475db7f5d, type: 2}
 --- !u!1 &8659792721498340678
 GameObject:
   m_ObjectHideFlags: 0

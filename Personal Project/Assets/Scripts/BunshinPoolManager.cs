@@ -24,6 +24,23 @@ public class BunshinPoolManager : MonoBehaviour
 
     //private Queue<GameObject> pool = new Queue<GameObject>();
 
+    public int currentLevel = 1;
+
+    public EnemyControllerT1 enemyControllerT1;
+    public EnemyController enemyControllerT2;
+
+    private void Update()
+    {
+        if (enemyControllerT1 == null)
+        {
+            enemyControllerT1 = FindFirstObjectByType<EnemyControllerT1>();
+        }
+        if (enemyControllerT2 == null)
+        {
+            enemyControllerT2 = FindFirstObjectByType<EnemyController>();
+        }
+    }
+
     void Awake()
     {
         // Pre-spawn Bunshin and disable them
@@ -68,6 +85,18 @@ public class BunshinPoolManager : MonoBehaviour
         if (objectPool.Count > 0)
         {
             GameObject obj = objectPool.Dequeue();
+            if (key == "Bunshin")
+            {
+                obj.GetComponent<BunshinController>().Initialize(currentLevel);
+            }
+            if (key == "EBunshinT1")
+            {
+                obj.GetComponent<EnemyControllerT1>().Initialize(currentLevel);
+            }
+            if (key == "EBunshinT2")
+            {
+                obj.GetComponent<EnemyController>().Initialize(currentLevel);
+            }
             obj.transform.SetPositionAndRotation(position, rotation);
             obj.SetActive(true);
             return obj;

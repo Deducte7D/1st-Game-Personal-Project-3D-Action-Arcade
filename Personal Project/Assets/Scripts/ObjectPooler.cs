@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
+    public EnemyControllerT1 enemyControllerT1;
+    public EnemyController enemyControllerT2;
+    public EnemyControllerT3 enemyControllerT3;
+    public KeeperController keeperController;
+    public EnemyT3Health healthT3;
+    public LevelUpdater levelUpdater;
+
+    public int currentLevel = 1;
+
     [System.Serializable]
     public class Pool
     {
@@ -39,9 +48,37 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (enemyControllerT1 == null)
+        {
+            enemyControllerT1 = FindFirstObjectByType<EnemyControllerT1>();
+        }
+        if (enemyControllerT2 == null)
+        {
+            enemyControllerT2 = FindFirstObjectByType<EnemyController>();
+        }
+        if (enemyControllerT3 == null)
+        {
+            enemyControllerT3 = FindFirstObjectByType<EnemyControllerT3>();
+        }
+        if (keeperController == null)
+        {
+            keeperController = FindFirstObjectByType<KeeperController>();
+        }
+        if (healthT3 == null)
+        {
+            healthT3 = FindFirstObjectByType<EnemyT3Health>();
+            //healthT3 = GetComponentInChildren<EnemyT3Health>();
+        }
+
+    }
+
     // public GameObject SpawnFromPool(string poolName, Vector3 position, Quaternion rotation)
     public GameObject SpawnFromPool(string poolName, float wavecount, float levelcount) /// will be called by spawnmanager
     {
+        currentLevel = (int)levelcount; // check level
+
         if (!poolDictionary.ContainsKey(poolName))
         {
             Debug.LogWarning("Pool with name " + poolName + " doesn't exist.");
@@ -55,6 +92,8 @@ public class ObjectPooler : MonoBehaviour
         {
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
+
+            objectToSpawn.GetComponent<EnemyControllerT1>().Initialize(currentLevel);
 
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
@@ -70,6 +109,8 @@ public class ObjectPooler : MonoBehaviour
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
 
+            objectToSpawn.GetComponent<EnemyControllerT1>().Initialize(currentLevel);
+
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
             objectToSpawn.transform.rotation = point.rotation;
@@ -83,6 +124,8 @@ public class ObjectPooler : MonoBehaviour
         {
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
+
+            objectToSpawn.GetComponent<EnemyControllerT1>().Initialize(currentLevel);
 
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
@@ -98,6 +141,8 @@ public class ObjectPooler : MonoBehaviour
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
 
+            objectToSpawn.GetComponent<EnemyController>().Initialize(currentLevel);
+
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
             objectToSpawn.transform.rotation = point.rotation;
@@ -111,6 +156,8 @@ public class ObjectPooler : MonoBehaviour
         {
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
+
+            objectToSpawn.GetComponent<EnemyController>().Initialize(currentLevel);
 
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
@@ -126,6 +173,8 @@ public class ObjectPooler : MonoBehaviour
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T1 & T2
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
 
+            objectToSpawn.GetComponent<EnemyController>().Initialize(currentLevel);
+
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
             objectToSpawn.transform.rotation = point.rotation;
@@ -139,6 +188,8 @@ public class ObjectPooler : MonoBehaviour
         {
             Transform point = spawnPoints[Random.Range(0, 2)]; // array 0 - 2 for T3
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
+
+            objectToSpawn.GetComponent<EnemyControllerT3>().Initialize(currentLevel);
 
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point
@@ -156,6 +207,8 @@ public class ObjectPooler : MonoBehaviour
         {
             Transform point = spawnPoints[5]; // only middle spawn point array 5
             GameObject objectToSpawn = poolDictionary[poolName].Dequeue(); // takes out 1st object FIFO
+
+            objectToSpawn.GetComponent<KeeperController>().Initialize(currentLevel);
 
             objectToSpawn.SetActive(true);
             objectToSpawn.transform.position = point.position; // position I will edit based on the spawn point

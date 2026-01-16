@@ -960,7 +960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyT3Health
   enemyT3Controller: {fileID: 1300111821733371938}
-  maxHealth: 550
   currentHealth: 0
   onHealthChanged:
     m_PersistentCalls:
@@ -980,6 +979,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  statsData: {fileID: 0}
 --- !u!114 &5753173177840565385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa93765974850d4093c1f57450f1f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyT3Hitbox
+  bunshinPool: {fileID: 0}
   isHit: 0
 --- !u!1 &6376357934463062611
 GameObject:
@@ -1509,6 +1510,10 @@ PrefabInstance:
       propertyPath: landDelay
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
+      propertyPath: statsData
+      value: 
+      objectReference: {fileID: 11400000, guid: 85fe5b25d701d4c42a6d7820c6418983, type: 2}
     - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
       propertyPath: smashSpeed
       value: 100
