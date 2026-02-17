@@ -3,40 +3,36 @@
   "WorkspaceRootPath": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\github clone repos\\1st-game-personal-project-3d-action-arcade\\personal project\\assets\\scripts\\spawnmanagerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\spawnmanagerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\environments\\spawnmanagerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\environments\\spawnmanagerv2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\scoringsys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scoringsys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\github clone repos\\1st-game-personal-project-3d-action-arcade\\personal project\\assets\\scripts\\environments\\statsincrementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\environments\\statsincrementmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\levelupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levelupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\controllers\\ballgoaltrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\ballgoaltrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontrollert3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\environments\\nextlevelbuttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\environments\\nextlevelbuttonhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\bunshinpoolmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bunshinpoolmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\github clone repos\\1st-game-personal-project-3d-action-arcade\\personal project\\assets\\scripts\\controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\enemycontrollert1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontrollert1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\environments\\gameuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\environments\\gameuimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\bunshincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bunshincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\environments\\scoringsys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\environments\\scoringsys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\assets\\scripts\\objectpooler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\objectpooler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|s:\\github clone repos\\1st-game-personal-project-3d-action-arcade\\personal project\\assets\\scripts\\controllers\\ballrollfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{177895CB-4F47-3755-436B-A776DA2B4B54}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\controllers\\ballrollfollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,112 +46,107 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ScoringSys.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\ScoringSys.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ScoringSys.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\ScoringSys.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ScoringSys.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\PlayerController.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\PlayerController.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA9wAoAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T17:07:56.752Z"
+              "WhenOpened": "2026-02-17T11:06:48.682Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LevelUpdater.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\LevelUpdater.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\LevelUpdater.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\LevelUpdater.cs",
-              "RelativeToolTip": "Assets\\Scripts\\LevelUpdater.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "StatsIncrementManager.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\StatsIncrementManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Environments\\StatsIncrementManager.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\StatsIncrementManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Environments\\StatsIncrementManager.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADwv38AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T13:03:15.001Z"
+              "WhenOpened": "2026-02-17T11:04:57.427Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "SpawnManagerV2.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\SpawnManagerV2.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\SpawnManagerV2.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\SpawnManagerV2.cs*",
-              "RelativeToolTip": "Assets\\Scripts\\SpawnManagerV2.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAFAAAAAAAAAA==",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\SpawnManagerV2.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Environments\\SpawnManagerV2.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\SpawnManagerV2.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Environments\\SpawnManagerV2.cs",
+              "ViewState": "AgIAAFEBAAAAAAAAAAAgwIcBAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T13:02:56.542Z",
+              "WhenOpened": "2026-02-04T04:37:11.698Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BallGoalTrigger.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\BallGoalTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\BallGoalTrigger.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\BallGoalTrigger.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\BallGoalTrigger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T10:24:52.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NextLevelButtonHandler.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\NextLevelButtonHandler.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Environments\\NextLevelButtonHandler.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\NextLevelButtonHandler.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Environments\\NextLevelButtonHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T10:45:38.439Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "EnemyControllerT1.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT1.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyControllerT1.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT1.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyControllerT1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA3AAAAAAAAAA==",
+              "Title": "GameUIManager.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\GameUIManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Environments\\GameUIManager.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\GameUIManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Environments\\GameUIManager.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwC8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T12:52:48.574Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EnemyControllerT3.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyControllerT3.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyControllerT3.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyControllerT3.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAgwD0AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T11:26:01.71Z"
+              "WhenOpened": "2026-02-12T11:17:45.61Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "BunshinController.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\BunshinController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BunshinController.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\BunshinController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BunshinController.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAkwEMAAAA9AAAAAAAAAA==",
+              "Title": "ScoringSys.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\ScoringSys.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Environments\\ScoringSys.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Environments\\ScoringSys.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Environments\\ScoringSys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T12:09:15.519Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BunshinPoolManager.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\BunshinPoolManager.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\BunshinPoolManager.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\BunshinPoolManager.cs",
-              "RelativeToolTip": "Assets\\Scripts\\BunshinPoolManager.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAhwF8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T16:00:01.626Z"
+              "WhenOpened": "2026-02-16T06:39:27.3Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "EnemyController.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyController.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\EnemyController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EnemyController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwB8AAAA3AAAAAAAAAA==",
+              "Title": "BallRollFollow.cs",
+              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\BallRollFollow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Controllers\\BallRollFollow.cs",
+              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\Controllers\\BallRollFollow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Controllers\\BallRollFollow.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAIwH8AAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T12:36:22.539Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ObjectPooler.cs",
-              "DocumentMoniker": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\ObjectPooler.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\ObjectPooler.cs",
-              "ToolTip": "S:\\GitHub clone repos\\1st-Game-Personal-Project-3D-Action-Arcade\\Personal Project\\Assets\\Scripts\\ObjectPooler.cs",
-              "RelativeToolTip": "Assets\\Scripts\\ObjectPooler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T12:13:27.818Z"
+              "WhenOpened": "2026-02-17T09:31:07.117Z",
+              "EditorCaption": ""
             }
           ]
         }

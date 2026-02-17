@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00888261a38625a449ef4adb4802ad64, type: 3}
   m_Name: Tier3StatsSO
   m_EditorClassIdentifier: Assembly-CSharp::Tier3StatsSO
-  speed: 2500
+  speed: 2550
   tackleForce: 20000
-  health: 550
+  health: 150
   speedPerLevel: 50
   tackleForcePerLevel: 1000
   healthPerLevel: 150

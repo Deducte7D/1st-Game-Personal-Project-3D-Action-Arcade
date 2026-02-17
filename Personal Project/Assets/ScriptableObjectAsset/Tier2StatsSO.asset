@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959189bee25cd0d4baf10c1412caf574, type: 3}
   m_Name: Tier2StatsSO
   m_EditorClassIdentifier: Assembly-CSharp::Tier2StatsSO
-  speed: 2050
+  speed: 1850
   tackleForce: 10000
   tackleCD: 3
   speedPerLevel: 150

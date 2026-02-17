@@ -960,6 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyT3Health
   enemyT3Controller: {fileID: 1300111821733371938}
+  maxHealth: 0
   currentHealth: 0
   onHealthChanged:
     m_PersistentCalls:
@@ -979,7 +980,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  statsData: {fileID: 0}
+  statsData: {fileID: 11400000, guid: 85fe5b25d701d4c42a6d7820c6418983, type: 2}
+  spawnManagerV2: {fileID: 0}
+  levelUpdater: {fileID: 0}
 --- !u!114 &5753173177840565385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,6 +1514,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
+      propertyPath: maxHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
       propertyPath: statsData
       value: 
       objectReference: {fileID: 11400000, guid: 85fe5b25d701d4c42a6d7820c6418983, type: 2}
@@ -1585,6 +1592,10 @@ PrefabInstance:
     - target: {fileID: 6061099617015426641, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851441741503842396, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7851441741503842396, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
