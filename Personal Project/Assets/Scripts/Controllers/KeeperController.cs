@@ -39,8 +39,8 @@ public class KeeperController : MonoBehaviour
 
     public GameObject Ball; // assign the FeetTarget transform
     public GameObject Player;
-    public PlayerController playercontrollerScript;
 
+    public PlayerController playercontrollerScript;
     public BallRollFollow ballrollfollowScript;
 
     public KeeperStatsSO statsData;
@@ -399,6 +399,11 @@ public class KeeperController : MonoBehaviour
         KeeperAnim.Rebind();
         KeeperAnim.Update(0f);
 
+    }
+
+    public void KeeperDequeue()
+    {
+        gameObject.SetActive(false);
     }
 
     //Keeper thought process

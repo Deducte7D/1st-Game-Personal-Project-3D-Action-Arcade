@@ -30,7 +30,7 @@ public class PowerUpManager : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         originalSpeed = playerController.speed;
-        originalJumpForce = playerController.jumpForce;
+        originalJumpForce = playerController.jumpForceVar;
     }
 
     public void ApplyLightning(float amount, float duration)
@@ -40,7 +40,7 @@ public class PowerUpManager : MonoBehaviour
         {
             StopCoroutine(lightningRoutine);
             playerController.speed = originalSpeed; // reset first
-            playerController.jumpForce = originalJumpForce; // reset first
+            playerController.jumpForceVar = originalJumpForce; // reset first
         }
 
         lightningRoutine = StartCoroutine(LightningEffect(amount, duration));
@@ -218,7 +218,7 @@ public class PowerUpManager : MonoBehaviour
         if (unwingedRoutine != null)
         {
             StopCoroutine(unwingedRoutine);
-            playerController.jumpForce = originalJumpForce; // reset first
+            playerController.jumpForceVar = originalJumpForce; // reset first
         }
 
         unwingedRoutine = StartCoroutine(UnwingedEffect(amount, duration));
@@ -228,12 +228,12 @@ public class PowerUpManager : MonoBehaviour
     {
         
         // Apply boost
-        playerController.jumpForce = amount;
+        playerController.jumpForceVar = amount;
 
         yield return new WaitForSeconds(duration);
 
         // Revert back to normal speed
-        playerController.jumpForce = originalJumpForce;
+        playerController.jumpForceVar = originalJumpForce;
 
         unwingedRoutine = null;
     }

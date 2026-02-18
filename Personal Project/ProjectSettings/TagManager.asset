@@ -28,6 +28,7 @@ TagManager:
   - CatchTarget
   - BunshinHitBox
   - BunshinPooler
+  - Goalpost
   layers:
   - Default
   - TransparentFX

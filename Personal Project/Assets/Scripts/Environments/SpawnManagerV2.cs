@@ -12,7 +12,7 @@ public class SpawnManagerV2 : MonoBehaviour
 
     [Header("Wave Settings")]
     [SerializeField] private bool useWaves = true;
-    [SerializeField] public int objectsPerWave = 3; // for T1 and T2
+    //[SerializeField] public int objectsPerWave = 3; // for T1 and T2
     [SerializeField] private int PUPerWave = 1; // for PU
     [SerializeField] public int APUPerWave = 1; // for APU
     [SerializeField] public int SmokeDupeUnits = 3; // for custom smoke dupe only needed for defeating enemy
@@ -38,7 +38,7 @@ public class SpawnManagerV2 : MonoBehaviour
     public bool isKeeperInstanced = false;
 
     public ObjectPooler pooler;
-    public StatsIncrementManager statsIncrementManager;
+    //public StatsIncrementManager statsIncrementManager;
     public LevelUpdater levelUpdater;
     public DistanceCounter distanceCounter;
     public ScoringSys scoreManager;
@@ -46,10 +46,14 @@ public class SpawnManagerV2 : MonoBehaviour
     public PlayerHealth playerHealth;
     public BallRollFollow ballController;
     public KeeperController keeperController;
+    public GoalPostController goalPostController;
     public GameUIManager gameUIManager;
     public TackleTrigger playerTackleTrigger;
     public BallGoalTrigger ballGoalTrigger;
 
+    public SpawnCountSO statsData;
+
+    [SerializeField] private float spawnCount; // T1 and T2 only
 
     [Header("Object Settings")]
     [SerializeField] private GameObject goalDetectScreen;
@@ -57,9 +61,16 @@ public class SpawnManagerV2 : MonoBehaviour
 
     //public StatsIncrementManagerV2 statsIncrementManagerV2;
 
+    public void Initialize()
+    {
+        spawnCount = statsData.GetSpawnCount((int)currentLevelCount); // increase by 1 every 2 levels
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Initialize();
+
         levelUpdater.LevelUp();
         currentLevelCount = levelUpdater.currentLevel;
         // bila nk start anjei 
@@ -78,6 +89,8 @@ public class SpawnManagerV2 : MonoBehaviour
             noGoalDetectScreen.SetActive(false);
         }
 
+        
+
         Resets();
 
     }
@@ -88,6 +101,10 @@ public class SpawnManagerV2 : MonoBehaviour
         {
             isKeeperInstanced = true;
         }
+        else if (isKeeperInstanced == false)
+        {
+            isKeeperInstanced = false;
+        }
     }
 
     private void Update()
@@ -97,6 +114,11 @@ public class SpawnManagerV2 : MonoBehaviour
         if (keeperController == null)
         {
             keeperController = FindFirstObjectByType<KeeperController>();
+        }
+
+        if (goalPostController == null)
+        {
+            goalPostController = FindFirstObjectByType<GoalPostController>();
         }
     }
 
@@ -150,7 +172,7 @@ public class SpawnManagerV2 : MonoBehaviour
 
             if (currentWaveCount < 5 && currentWaveCount > 0)
             {
-                for (int i = 0; i < objectsPerWave; i++)
+                for (int i = 0; i < spawnCount; i++)
                 {
                     
                     // rework method call
@@ -303,34 +325,37 @@ public class SpawnManagerV2 : MonoBehaviour
                 yield return new WaitForSeconds(waveInterval);
                 //currentWaveCount++;
             }
-            else if (currentWaveCount > 6)
-            {
-                // MUST DELAY BEFORE WAVE COUNT 0 RIGHT AWAY
-                // BECOZ WHEN ITS ZERO ALL HAVE RESET
+            //else if (currentWaveCount > 6)
+            //{
+            //    // MUST DELAY BEFORE WAVE COUNT 0 RIGHT AWAY
+            //    // BECOZ WHEN ITS ZERO ALL HAVE RESET
 
 
-                Debug.Log("Resetted Wave, Leveled Up");
-                // Level completed
+            //    Debug.Log("Resetted Wave, Leveled Up");
+            //    // Level completed
 
-                // Here should be the method call where stats are increased
-                // passing the counter value of currentWaveCount and currentLevelCount
+            //    // Here should be the method call where stats are increased
+            //    // passing the counter value of currentWaveCount and currentLevelCount
 
-                // The wave reset and level counter
-                // set to 0 first for reset
-                //currentWaveCount = 0;
-                //currentLevelCount++;
-                levelUpdater.LevelUp();
+            //    // The wave reset and level counter
+            //    // set to 0 first for reset
+            //    //currentWaveCount = 0;
+            //    //currentLevelCount++;
+            //    levelUpdater.LevelUp();
 
-                currentLevelCount = levelUpdater.currentLevel;
+            //    currentLevelCount = levelUpdater.currentLevel;
 
-                statsIncrementManager.PlayerIncrementStats(currentWaveCount, currentLevelCount);
-                //statsIncrementManager.EnemyT1IncrementStats(currentWaveCount, currentLevelCount);
-                //statsIncrementManager.EnemyT2IncrementStats(currentWaveCount, currentLevelCount);
-                //statsIncrementManager.EnemyT3IncrementStats(currentWaveCount, currentLevelCount);
-                //statsIncrementManager.KeeperIncrementStats(currentWaveCount, currentLevelCount);
-                //statsIncrementManager.BunshinIncrementStats(currentWaveCount, currentLevelCount);
-                yield return new WaitForSeconds(5); // temporary delay
-            }
+            //    playerController.Initialize((int)currentLevelCount); // call player stats increment
+            //    Initialize(); // for spawn increase by 1 each 2 levels
+
+            //    //statsIncrementManager.PlayerIncrementStats(currentWaveCount, currentLevelCount);
+            //    //statsIncrementManager.EnemyT1IncrementStats(currentWaveCount, currentLevelCount);
+            //    //statsIncrementManager.EnemyT2IncrementStats(currentWaveCount, currentLevelCount);
+            //    //statsIncrementManager.EnemyT3IncrementStats(currentWaveCount, currentLevelCount);
+            //    //statsIncrementManager.KeeperIncrementStats(currentWaveCount, currentLevelCount);
+            //    //statsIncrementManager.BunshinIncrementStats(currentWaveCount, currentLevelCount);
+            //    yield return new WaitForSeconds(5); // temporary delay
+            //}
 
 
         }
@@ -352,6 +377,32 @@ public class SpawnManagerV2 : MonoBehaviour
     {
         isFailAttempt = true;
         gameUIManager.LoseGame();
+    }
+
+    public void CallLevelUpdateStatsIncrement()
+    {
+        // MUST DELAY BEFORE WAVE COUNT 0 RIGHT AWAY
+        // BECOZ WHEN ITS ZERO ALL HAVE RESET
+
+        Debug.Log("Resetted Wave, Leveled Up");
+        // Level completed
+
+        // Here should be the method call where stats are increased
+        // passing the counter value of currentWaveCount and currentLevelCount
+
+        // The wave reset and level counter
+        // set to 0 first for reset
+        //currentWaveCount = 0;
+        //currentLevelCount++;
+        levelUpdater.LevelUp();
+
+        currentLevelCount = levelUpdater.currentLevel;
+
+        playerController.Initialize((int)currentLevelCount); // call player stats increment
+        Initialize(); // for spawn increase by 1 each 2 levels
+
+        
+        new WaitForSeconds(3); // temporary delay
     }
 
     // call by nextlevelbuttonhandler
@@ -376,6 +427,7 @@ public class SpawnManagerV2 : MonoBehaviour
         isAliveT3 = true;
         isGoal = false;
         isFailAttempt = false;
+        isKeeperInstanced = false; // to reset keeper spawn check for ball script
 
         if (goalDetectScreen != null && noGoalDetectScreen != null)
         {
@@ -396,8 +448,15 @@ public class SpawnManagerV2 : MonoBehaviour
         {
             keeperController.ResetKeeperBool();
             keeperController.ResetKeeperAnimation();
+            keeperController.KeeperDequeue();
         }
-        
+
+        if (goalPostController != null)
+        {
+            goalPostController.GoalPostDequeue();
+
+        }
+
         gameUIManager.HidePanels();
     }
 

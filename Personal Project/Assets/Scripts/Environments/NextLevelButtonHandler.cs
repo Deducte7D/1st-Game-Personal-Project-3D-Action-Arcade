@@ -15,7 +15,7 @@ public class NextLevelButtonHandler : MonoBehaviour
 
         // Add new listener
         //waveResetButton.onClick.AddListener(TaskOnClick);
-
+        waveResetButton.onClick.AddListener(() => spawnManager.CallLevelUpdateStatsIncrement());
         waveResetButton.onClick.AddListener(() => spawnManager.ResetWaveCount());
         waveResetButton.onClick.AddListener(() => spawnManager.Resets());
         waveResetButton.onClick.AddListener(() => distanceCounter.NewLevel());

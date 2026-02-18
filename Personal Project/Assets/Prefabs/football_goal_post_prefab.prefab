@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8128668236925612103, guid: 7d272c1c538fbd944bdcf389baa07ffa, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Goalpost
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 7d272c1c538fbd944bdcf389baa07ffa, type: 3}
       propertyPath: m_LocalScale.x
@@ -98,6 +98,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 7d272c1c538fbd944bdcf389baa07ffa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3486651821855556210}
+    - targetCorrespondingSourceObject: {fileID: 8128668236925612103, guid: 7d272c1c538fbd944bdcf389baa07ffa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -363506416673347604}
     - targetCorrespondingSourceObject: {fileID: 6244140568040061784, guid: 7d272c1c538fbd944bdcf389baa07ffa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 21317975127630758}
@@ -332,3 +335,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.137907, y: 2.4363315, z: 1.6000183}
   m_Center: {x: 0.0034039814, y: 1.1885775, z: 0.44617516}
+--- !u!114 &-363506416673347604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7532019934415093493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c51ca08a6f961bf41901f86dd5f38c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalPostController

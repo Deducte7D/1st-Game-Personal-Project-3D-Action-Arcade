@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private Animator playerAnim;
-    public float speed = 1550.0f;
-    public float jumpForce = 1000.0f;
+    //public float speed = 1550.0f;
+    //public float jumpForce = 1000.0f;
     public bool isOnGround = true;
     public float rotationSpeed = 500f;
     public float gravityModifier;
@@ -22,6 +22,33 @@ public class PlayerController : MonoBehaviour
 
     private bool inputMovement = true;
 
+    public PlayerStatsSO statsData;
+    public LevelUpdater levelUpdater;
+    private int currentLevel;
+
+    // allow value inspection
+    [SerializeField] public float speed;
+    [SerializeField] public float jumpForceVar;
+
+    // public property for any read-only
+    public float SpeedForce => speed;
+    public float JumpForce => jumpForceVar;
+
+    public float initialSpeed;
+
+    //public float followForce { get; private set; }
+    //public float tackleForce { get; private set; }
+    //public int maxHealth { get; private set; }
+
+    public void Initialize(int level)
+    {
+        currentLevel = level;
+        speed = statsData.GetSpeed(currentLevel);
+        jumpForceVar = statsData.GetJump(currentLevel);
+
+        initialSpeed = speed;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +57,10 @@ public class PlayerController : MonoBehaviour
         playerRb.useGravity = false;
 
         GetInitPlayerPos(); // store player position when game/scene start
+
+        currentLevel = levelUpdater.currentLevel;
+
+        Initialize(currentLevel);
 
         //Physics.gravity *= gravityModifier;
         //playerRb.AddForce(Vector3.down * gravityModifier * playerRb.mass, ForceMode.Force);
@@ -61,7 +92,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && isOnGround /*&& !gameOver*/)
             {
                 //playerAudio.PlayOneShot(jumpSound, 1.0f);
-                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                playerRb.AddForce(Vector3.up * jumpForceVar, ForceMode.Impulse);
                 isOnGround = false;
                 playerAnim.SetTrigger("Jump_trig");
                 //dirtParticle.Stop();
@@ -161,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerPosToInit()
     {
-        playerRb.MovePosition(playerPosInit.position);
+        playerRb.MovePosition(playerSpawnPoint);
     }
 
 }

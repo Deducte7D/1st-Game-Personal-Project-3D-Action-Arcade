@@ -2898,76 +2898,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 745054263}
-  - component: {fileID: 745054262}
   m_Layer: 0
   m_Name: StatsIncObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &745054262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745054261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c0eb92558de7634a9668461b4acff3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StatsIncrementManager
-  playerController: {fileID: 1092593676}
-  bunshinController: {fileID: 0}
-  enemyControllerT1: {fileID: 0}
-  enemyControllerT2: {fileID: 0}
-  enemyControllerT3: {fileID: 0}
-  keeperController: {fileID: 0}
-  spawnManagerV2: {fileID: 1154938574}
-  healthT3: {fileID: 0}
-  playerStats:
-    speed: 100
-    jump: 50
-    tackle: 0
-    tackleCooldown: 0
-    unitsSpawn: 0
-    health: 0
-  bunshinStats:
-    speed: 30
-    jump: 0
-    tackle: 50
-    tackleCooldown: 0
-    unitsSpawn: 0
-    health: 0
-  tier1Stats:
-    speed: 100
-    jump: 100
-    tackle: 0
-    tackleCooldown: -0.1
-    unitsSpawn: 0
-    health: 0
-  tier2Stats:
-    speed: 150
-    jump: 0
-    tackle: 50
-    tackleCooldown: -0.1
-    unitsSpawn: 0
-    health: 0
-  tier3Stats:
-    speed: 50
-    jump: 0
-    tackle: 1000
-    tackleCooldown: 0
-    unitsSpawn: 0
-    health: 150
-  keeperStats:
-    speed: 30
-    jump: 0
-    tackle: 0
-    tackleCooldown: 0
-    unitsSpawn: 0
-    health: 0
+  m_IsActive: 0
 --- !u!4 &745054263
 Transform:
   m_ObjectHideFlags: 0
@@ -3447,6 +3384,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844712715}
   m_CullTransparentMesh: 1
+--- !u!1 &854685247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854685249}
+  - component: {fileID: 854685248}
+  m_Layer: 0
+  m_Name: ScoringManagerObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &854685248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854685247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84fd685f924cfdc41854032865df3756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoringSys
+  totalScore: 0
+--- !u!4 &854685249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854685247}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.22601, y: 19.03638, z: 50}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888921217
 GameObject:
   m_ObjectHideFlags: 0
@@ -3720,7 +3702,7 @@ MonoBehaviour:
   levelDistance: 250
   initLevelDistance: 0
   levelEnded: 0
-  scoreManager: {fileID: 1592870030}
+  scoreManager: {fileID: 0}
   distanceText: {fileID: 1645388805}
 --- !u!4 &929975876
 Transform:
@@ -4115,8 +4097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6780c1f71b269646baa422189ef67d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2050
-  jumpForce: 1000
   isOnGround: 1
   rotationSpeed: 500
   gravityModifier: 1.8
@@ -4126,6 +4106,11 @@ MonoBehaviour:
   playerPosInit: {fileID: 0}
   playerSpawnPoint: {x: 0, y: 0, z: 0}
   playerMovement: {x: 0, y: 0, z: 0}
+  statsData: {fileID: 11400000, guid: 6098d03eadadaa44c8a855e4b3190918, type: 2}
+  levelUpdater: {fileID: 1592870029}
+  speed: 2050
+  jumpForceVar: 0
+  initialSpeed: 0
 --- !u!4 &1092593678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0703a1849c2c89b4db4568688faf0c5f, type: 3}
@@ -4381,13 +4366,12 @@ MonoBehaviour:
   spawnInterval: 0
   autoStart: 1
   useWaves: 1
-  objectsPerWave: 1
   PUPerWave: 0
   APUPerWave: 0
   SmokeDupeUnits: 3
   numberSpawnBossGoal: 1
   waveInterval: 5
-  currentWaveCount: 4
+  currentWaveCount: 1
   currentLevelCount: 0
   smokeDupeInterval: 5
   isAliveT3: 1
@@ -4395,17 +4379,19 @@ MonoBehaviour:
   isFailAttempt: 0
   isKeeperInstanced: 0
   pooler: {fileID: 2147363384}
-  statsIncrementManager: {fileID: 745054262}
   levelUpdater: {fileID: 1592870029}
   distanceCounter: {fileID: 929975875}
-  scoreManager: {fileID: 1592870030}
+  scoreManager: {fileID: 854685248}
   playerController: {fileID: 1092593676}
   playerHealth: {fileID: 417570173}
   ballController: {fileID: 1259829165}
   keeperController: {fileID: 0}
+  goalPostController: {fileID: 0}
   gameUIManager: {fileID: 2101562987}
   playerTackleTrigger: {fileID: 311806357}
   ballGoalTrigger: {fileID: 1259829166}
+  statsData: {fileID: 11400000, guid: f64334fc7855fcf46b7d534ae3527974, type: 2}
+  spawnCount: 0
   goalDetectScreen: {fileID: 831224271}
   noGoalDetectScreen: {fileID: 162722344}
 --- !u!1 &1156869392
@@ -6453,7 +6439,6 @@ GameObject:
   - component: {fileID: 1592870028}
   - component: {fileID: 1592870027}
   - component: {fileID: 1592870029}
-  - component: {fileID: 1592870030}
   - component: {fileID: 1592870031}
   m_Layer: 0
   m_Name: GlobalEffectsManager
@@ -6502,19 +6487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpdater
   currentLevel: 0
---- !u!114 &1592870030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592870026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84fd685f924cfdc41854032865df3756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScoringSys
-  totalScore: 0
 --- !u!114 &1592870031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8456,7 +8428,7 @@ MonoBehaviour:
   loseLevelText: {fileID: 1585799003}
   currentPoints: 0
   currentLevel: 0
-  scoreManager: {fileID: 1592870030}
+  scoreManager: {fileID: 854685248}
   levelUpdater: {fileID: 1592870029}
 --- !u!4 &2101562988
 Transform:
@@ -10219,3 +10191,4 @@ SceneRoots:
   - {fileID: 1592870028}
   - {fileID: 202151010}
   - {fileID: 2101562988}
+  - {fileID: 854685249}
