@@ -934,7 +934,7 @@ MeshCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 524288
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3730,7 +3730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceTravelled: 0
-  levelDistance: 275
+  levelDistance: 250
   initLevelDistance: 0
   levelEnded: 0
   scoreManager: {fileID: 0}
@@ -4401,8 +4401,8 @@ MonoBehaviour:
   APUPerWave: 0
   SmokeDupeUnits: 3
   numberSpawnBossGoal: 1
-  waveInterval: 5
-  currentWaveCount: 1
+  waveInterval: 1
+  currentWaveCount: 4
   currentLevelCount: 0
   smokeDupeInterval: 5
   isAliveT3: 1
@@ -8459,7 +8459,6 @@ MonoBehaviour:
   loseLevelText: {fileID: 1585799003}
   currentPoints: 0
   currentLevel: 0
-  displayDelay: 2.5
   scoreManager: {fileID: 854685248}
   levelUpdater: {fileID: 1592870029}
 --- !u!4 &2101562988

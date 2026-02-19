@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,13 +17,34 @@ public class GameUIManager : MonoBehaviour
     public int currentPoints;
     public int currentLevel;
 
+    public float displayDelay = 2.5f;
+
     public ScoringSys scoreManager;
     public LevelUpdater levelUpdater;
 
 
+    //public void WinGame()
+    //{
+    //    RecordCurrent_LevelPoints();
+    //    winPanel.SetActive(true);
+    //    //winPointsText.text = "Current Point: " + currentPoints;
+    //    //winNextLevelText.text = "To Next Level: " + (currentLevel + 1);
+    //    winPointsText.text = "" + currentPoints;
+    //    winNextLevelText.text = "" + (currentLevel + 1);
+    //    Time.timeScale = 0f;
+    //}
+
     public void WinGame()
     {
+        StartCoroutine(DelayedWinPanel());
+    }
+
+    private IEnumerator DelayedWinPanel()
+    {
         RecordCurrent_LevelPoints();
+
+        yield return new WaitForSeconds(1.5f); // adjust to match animation length
+
         winPanel.SetActive(true);
         //winPointsText.text = "Current Point: " + currentPoints;
         //winNextLevelText.text = "To Next Level: " + (currentLevel + 1);
@@ -31,14 +53,33 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
+    //public void LoseGame()
+    //{
+    //    new WaitForSeconds(displayDelay);
+    //    RecordCurrent_LevelPoints();
+    //    losePanel.SetActive(true);
+    //    losePointsText.text = "" + currentPoints;
+    //    loseLevelText.text = "" + currentLevel;
+    //    Time.timeScale = 0f;
+    //}
+
     public void LoseGame()
     {
+        StartCoroutine(DelayedLosePanel());
+    }
+
+    private IEnumerator DelayedLosePanel()
+    {
         RecordCurrent_LevelPoints();
+
+        yield return new WaitForSeconds(1.5f); // adjust to match animation length
+
         losePanel.SetActive(true);
         losePointsText.text = "" + currentPoints;
         loseLevelText.text = "" + currentLevel;
         Time.timeScale = 0f;
     }
+
 
     // still in planning
     public void GoNextLevel()

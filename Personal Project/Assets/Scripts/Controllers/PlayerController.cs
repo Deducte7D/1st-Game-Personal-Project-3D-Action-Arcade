@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     public bool gameOver = false;
     public MoveLeftBG movingGround;
     public DistanceCounter levelEndStatus;
-    public Transform playerPosInit; // the starting transform
+    //public Transform playerPosInit; // the starting transform
+    public Transform spawnPoint;
     public Vector3 playerSpawnPoint;
     public Vector3 playerMovement;
 
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerRb.useGravity = false;
 
-        GetInitPlayerPos(); // store player position when game/scene start
+        //GetInitPlayerPos(); // store player position when game/scene start
 
         currentLevel = levelUpdater.currentLevel;
 
@@ -184,15 +185,18 @@ public class PlayerController : MonoBehaviour
     }
 
     // method just to get the spawn position of player transform to use back for next level
-    public void GetInitPlayerPos()
-    {
-        playerPosInit = gameObject.transform;
-        playerSpawnPoint = playerPosInit.position;
-    }
+    //public void GetInitPlayerPos()
+    //{
+    //    playerPosInit = gameObject.transform;
+    //    playerSpawnPoint = playerPosInit.position;
+    //}
 
     public void PlayerPosToInit()
     {
-        playerRb.MovePosition(playerSpawnPoint);
+        //playerRb.MovePosition(playerSpawnPoint);
+        playerRb.position = spawnPoint.position;
+        playerRb.linearVelocity = Vector3.zero; // clear movement
+        //playerRb.MovePosition(spawnPoint.position);
     }
 
 }

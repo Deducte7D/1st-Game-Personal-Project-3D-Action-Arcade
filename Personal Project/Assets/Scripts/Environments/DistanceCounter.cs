@@ -77,7 +77,7 @@ public class DistanceCounter : MonoBehaviour
 
     public void CounterIncrement()
     {
-        levelDistance += 50f;
+        levelDistance += 25f; // originally 50 but too long
     }
 
     public void CounterToRecord()

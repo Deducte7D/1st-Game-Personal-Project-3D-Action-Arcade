@@ -166,7 +166,7 @@ public class SpawnManagerV2 : MonoBehaviour
                 //Resets(); // reset for new level preparations
 
                 // delay before enemy spawn
-                yield return new WaitForSeconds(waveInterval); // 2 secs should be ok
+                yield return new WaitForSeconds(1); // 2 secs should be ok
                 currentWaveCount++;
             }
 
@@ -265,10 +265,10 @@ public class SpawnManagerV2 : MonoBehaviour
 
                 if (isAliveT3 == false)
                 {
-                    yield return new WaitForSeconds(9); // wait a few secs before count up to spawn keeper
+                    yield return new WaitForSeconds(4.5f); // wait a few secs before count up to spawn keeper
                     currentWaveCount++;
                 }
-                else
+                else if(isAliveT3 == true) // shud fixed the non icrement on new level
                 {
                     //distanceCounter.levelDistance += 100;
                     distanceCounter.CounterIncrement();
@@ -280,21 +280,24 @@ public class SpawnManagerV2 : MonoBehaviour
                 for (int i = 0; i < numberSpawnBossGoal; i++)
                 {
 
-                    string[] enemyTypes = { "Keeper" };
-                    string chosenType = enemyTypes[0];
+                    if(!isKeeperInstanced) //is not false = true, thus execute
+                    {
+                        string[] enemyTypes = { "Keeper" };
+                        string chosenType = enemyTypes[0];
 
-                    // spawn method call
-                    pooler.SpawnFromPool(chosenType, currentWaveCount, currentLevelCount);
+                        // spawn method call
+                        pooler.SpawnFromPool(chosenType, currentWaveCount, currentLevelCount);
 
-                    // state for prefab keeper spawned
-                    isKeeperInstanced = true;
+                        // state for prefab keeper spawned
+                        isKeeperInstanced = true;
 
-                    // declare new instant variable
-                    string[] enemyTypes2 = { "GoalPost" };
-                    string chosenType2 = enemyTypes2[0];
+                        // declare new instant variable
+                        string[] enemyTypes2 = { "GoalPost" };
+                        string chosenType2 = enemyTypes2[0];
 
-                    // spawn method call
-                    pooler.SpawnFromPool(chosenType2, currentWaveCount, currentLevelCount);
+                        // spawn method call
+                        pooler.SpawnFromPool(chosenType2, currentWaveCount, currentLevelCount);
+                    }
 
                     //SpawnObject();
                     //SpawnGoal(currentWaveCount, currentLevelCount);

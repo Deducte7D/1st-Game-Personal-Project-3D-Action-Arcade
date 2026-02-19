@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UIElements;
+using System.Collections;
 
 public class BallGoalTrigger : MonoBehaviour
 {
@@ -50,12 +52,19 @@ public class BallGoalTrigger : MonoBehaviour
         }
     }
 
+    // should fix the sudden noGoal or yepGoal
     public void triggerCooldown()
     {
-        if (canTrigger == false)
+        StartCoroutine(DelayedCooldown());
+    }
+
+    private IEnumerator DelayedCooldown()
+    {
+        if(canTrigger == false)
         {
-            new WaitForSeconds(triggerDelay);
+            yield return new WaitForSeconds(3f); // adjust to match animation length
             canTrigger = true;
         }
     }
+
 }
