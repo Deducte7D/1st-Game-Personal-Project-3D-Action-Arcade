@@ -22,7 +22,13 @@ public class GameUIManager : MonoBehaviour
     public ScoringSys scoreManager;
     public LevelUpdater levelUpdater;
 
-
+    private void Update()
+    {
+        if (scoreManager == null)
+        {
+            scoreManager = FindFirstObjectByType<ScoringSys>();
+        }
+    }
     //public void WinGame()
     //{
     //    RecordCurrent_LevelPoints();

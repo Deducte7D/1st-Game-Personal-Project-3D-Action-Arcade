@@ -4631,18 +4631,17 @@ MonoBehaviour:
   spawnInterval: 0
   autoStart: 1
   useWaves: 1
-  PUPerWave: 1
-  APUPerWave: 1
+  PUPerWave: 0
+  APUPerWave: 0
   SmokeDupeUnits: 1
   numberSpawnBossGoal: 1
   waveInterval: 5
   currentWaveCount: 1
   currentLevelCount: 0
-  smokeDupeInterval: 3.5
+  smokeDupeInterval: 5
   isAliveT3: 1
   isGoal: 0
   isFailAttempt: 0
-  isT3SpawnedOnce: 0
   isKeeperInstanced: 0
   pooler: {fileID: 2147363384}
   levelUpdater: {fileID: 1592870029}

@@ -13,11 +13,15 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = true;
     public float rotationSpeed = 500f;
     public float gravityModifier;
+    private bool applyLocalGravity = true;
+    private bool applySuperYGravity = false; //bool for object burst floated from impact
+    public float maxYGravityModifier = 5f;
     public bool gameOver = false;
     public MoveLeftBG movingGround;
     public DistanceCounter levelEndStatus;
     //public Transform playerPosInit; // the starting transform
     public Transform spawnPoint;
+    
     public Vector3 playerSpawnPoint;
     public Vector3 playerMovement;
 
@@ -36,6 +40,14 @@ public class PlayerController : MonoBehaviour
     public float JumpForce => jumpForceVar;
 
     public float initialSpeed;
+
+    public GameUIManager gameUIManager;
+
+    [Header("Boundary Settings")]
+    public Transform playerBoundarySpawnPoint;
+    public Transform wallBorderLeft;
+    [SerializeField] private float minY = -10f;
+    [SerializeField] private float maxY = 18.6f;
 
     //public float followForce { get; private set; }
     //public float tackleForce { get; private set; }
@@ -70,6 +82,43 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // this is for fall off map
+        if(transform.position.y < minY)
+        {
+            ResetPositionBoundary();
+        }
+
+        // dot product : if negative, player is behind wall
+        Vector3 toPlayer = transform.position - wallBorderLeft.position;
+        float dot = Vector3.Dot(wallBorderLeft.forward, toPlayer);
+        //Debug.Log("Dot value: " + dot);
+
+        if (dot < -23f) // player behind wall condition
+        {
+            ResetPositionBoundary();
+        }
+
+        if (wallBorderLeft == null)
+        {
+            wallBorderLeft = GameObject.Find("BorderLeftForPlayer").transform;
+        }
+
+        if (playerBoundarySpawnPoint == null)
+        {
+            playerBoundarySpawnPoint = GameObject.Find("SpawnBoundaryPlayer").transform;
+        }
+
+        if (transform.position.y > maxY)
+        {
+            applySuperYGravity = true;
+            applyLocalGravity = false;
+        }
+        else if (transform.position.y < maxY)
+        {
+            applySuperYGravity = false;
+            applyLocalGravity = true;
+        }
+
         if (inputMovement)
         {
             float horizontalInput = Input.GetAxis("Horizontal");
@@ -104,8 +153,20 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
-        playerRb.AddForce(customGravity, ForceMode.Acceleration);
+        if (applySuperYGravity == true)
+        {
+            Vector3 customGravity = Vector3.down * 9.81f * maxYGravityModifier;
+            playerRb.AddForce(customGravity, ForceMode.Acceleration);
+        }
+
+        if (applyLocalGravity)
+        {
+            Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
+            playerRb.AddForce(customGravity, ForceMode.Acceleration);
+        }
+
+        //Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
+        //playerRb.AddForce(customGravity, ForceMode.Acceleration);
 
         bool levelEnd = levelEndStatus.levelEnded;
 
@@ -168,6 +229,8 @@ public class PlayerController : MonoBehaviour
         inputMovement = false;
 
         Debug.Log("Player died - physics + control changed + slow mo");
+
+        gameUIManager.LoseGame(); // call lose panel (delayed)
     }
 
     private IEnumerator SlowMotionDeath()
@@ -197,6 +260,23 @@ public class PlayerController : MonoBehaviour
         playerRb.position = spawnPoint.position;
         playerRb.linearVelocity = Vector3.zero; // clear movement
         //playerRb.MovePosition(spawnPoint.position);
+    }
+
+    public void PlayerRbKinematicToggleTrue()
+    {
+        playerRb.isKinematic = true;
+    }
+
+    public void PlayerRbKinematicToggleFalse()
+    {
+        playerRb.isKinematic = false;
+    }
+
+    public void ResetPositionBoundary()
+    {
+        transform.position = playerBoundarySpawnPoint.position;
+        transform.rotation = playerBoundarySpawnPoint.rotation;
+        
     }
 
 }

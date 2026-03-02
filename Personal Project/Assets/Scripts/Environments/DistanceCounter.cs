@@ -21,10 +21,17 @@ public class DistanceCounter : MonoBehaviour
         moveLeftScript = FindFirstObjectByType<MoveLeftBG>();
         //levelDistance = 250f;
         initLevelDistance = levelDistance;
+
+        
     }
 
     void Update()
     {
+        if (scoreManager == null)
+        {
+            scoreManager = FindFirstObjectByType<ScoringSys>();
+        }
+
         if (!levelEnded)
         {
             // Increase distance based on movement speed

@@ -9,28 +9,34 @@ EditorUserSettings:
       value: 18134705175a055722080a3115371d4a0d55006876786860616b0471b8b07a68ffab74f9ee2a3a30300cea1a11320d0beb1a0c25f7060f494b4cdf1b18f3045e38cb5ad8
       flags: 0
     RecentlyUsedSceneGuid-0:
-      value: 07520c055c535a5e0b0a5b7646770d4910164e2c757c7e62292a4a64bbb46d6a
-      flags: 0
-    RecentlyUsedSceneGuid-1:
       value: 560206555c53505f0c575a2016740e4415161c282a7e7633792b1867b7b16d3d
       flags: 0
-    RecentlyUsedSceneGuid-2:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
-      flags: 0
-    RecentlyUsedSceneGuid-3:
+    RecentlyUsedSceneGuid-1:
       value: 0653015206505959085e5573477609444f164f297c7923317f2b1b31e1e5626d
       flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-2:
       value: 54060d5555040c0d095e0e2612225b4415161a73787e7e36797f4c35bbe2673a
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-3:
       value: 50540654060558035b5e09711325064417151d7d2970253378714e6bb7e2326e
       flags: 0
-    RecentlyUsedSceneGuid-6:
+    RecentlyUsedSceneGuid-4:
       value: 5454570354510c0b590b5e21412609444715407f7a7d73357c704437b5e3316b
       flags: 0
-    RecentlyUsedSceneGuid-7:
+    RecentlyUsedSceneGuid-5:
       value: 5703025050570b095d5d5d71487a0a44154e197d792b71317c2f4465e4b3663a
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 07520c055c535a5e0b0a5b7646770d4910164e2c757c7e62292a4a64bbb46d6a
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5152515f57515003550f0e7241700f4445164173297870687c2a4961e0b5616a
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 540304555d0c0d5a545b5f7440715e44104f4f7a7b2970647e7d1932e1b96c3b
       flags: 0
     UIBuilder.EditorExtensionModeKey:
       value: 2550581500

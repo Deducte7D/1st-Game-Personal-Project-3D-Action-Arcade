@@ -1506,6 +1506,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
+      propertyPath: minY
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3578300480530893338, guid: d373b29eacf64024c8f7be34d5551086, type: 3}
       propertyPath: jumpForce
       value: 7000
       objectReference: {fileID: 0}

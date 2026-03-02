@@ -28,6 +28,7 @@ public class ScoringSys : MonoBehaviour
     // accumulate score final scores
     public void AddScore(float score)
     {
+        LoadScore();
         totalScore += score;
         SaveScore();
 
@@ -59,7 +60,7 @@ public class ScoringSys : MonoBehaviour
         totalScore = PlayerPrefs.GetFloat("Highscore", 0);
 
         Debug.Log("Total Score: " + totalScore);
-
+        
         return totalScore;
     }
     

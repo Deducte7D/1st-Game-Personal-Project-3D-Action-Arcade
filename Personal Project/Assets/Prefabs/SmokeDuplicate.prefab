@@ -90,6 +90,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &1427163368192189405
 SphereCollider:
@@ -124,6 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3aa6fda88732b0499ba1dc0cbdb6c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PUTrigSmokeDupe
-  copies: 3
+  copies: 2
   duration: 0
   floatSpeed: 50

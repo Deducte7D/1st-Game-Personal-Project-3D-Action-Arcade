@@ -61,6 +61,8 @@ public class BunshinController : MonoBehaviour
     [SerializeField] private float followForce;
     [SerializeField] private float tackleForce;
 
+    [SerializeField] private float minY = -10f;
+
     // public property for any read-only
     public float FollowForce => followForce;
     public float TackleForce => tackleForce;
@@ -130,6 +132,11 @@ public class BunshinController : MonoBehaviour
         if (distanceCounter == null)
         {
             distanceCounter = FindFirstObjectByType<DistanceCounter>();
+        }
+
+        if (transform.position.y < minY)
+        {
+            DequeueFallOffMap();
         }
 
         // for movement and rotation
@@ -404,6 +411,11 @@ public class BunshinController : MonoBehaviour
         bunshinRb.linearDamping = defaultLinearDamping;
         bunshinRb.angularDamping = defaultAngularDamping;
         bunshinRb.mass = defaultMass;
+
+    }
+
+    private void DequeueFallOffMap()
+    {
 
     }
 }

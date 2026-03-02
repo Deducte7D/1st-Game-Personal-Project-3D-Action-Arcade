@@ -21,13 +21,15 @@ public class EnemyControllerT3 : MonoBehaviour
     public GameObject feetTarget; // assign the FeetTarget transform
     public GameObject plane;
     
-    public float tackleCooldown = 3f;
+    public float tackleCooldown = 2f;
     private bool canTackle = true;
     public bool isOnGround = true;
     public MoveLeftBG movingGround;
     //public PlayerController gravityModifier;
     public float gravityModifier;
     private bool applyLocalGravity = true;
+    private bool applySuperYGravity = false; //bool for object burst floated from impact
+    public float maxYGravityModifier = 5f;
 
     private bool isTackling = false;
     private bool isSlide = false;
@@ -64,7 +66,7 @@ public class EnemyControllerT3 : MonoBehaviour
     public SpawnManagerV2 spawnManagerV2;
 
     public Tier3StatsSO statsData;
-    public LevelUpdater levelUpdater;
+    //public LevelUpdater levelUpdater; // basically not used
     private int currentLevel;
 
     // allow value inspection
@@ -78,6 +80,13 @@ public class EnemyControllerT3 : MonoBehaviour
     public int MaxHealth => maxHealth;
 
     public float initialFollowForce;
+
+    [Header("Boundary Settings")]
+    public Transform wallBorderLeft;
+    public Transform enemyT3BoundarySpawnPoint;
+    [SerializeField] private float minY = -20f;
+    [SerializeField] private float maxY = 21f;
+
 
     //public float followForce { get; private set; }
     //public float tackleForce { get; private set; }
@@ -104,8 +113,18 @@ public class EnemyControllerT3 : MonoBehaviour
         movingGround = plane.GetComponent<MoveLeftBG>(); // reassign for prefab
 
         enemyRb.useGravity = false;
+
+        if (wallBorderLeft == null)
+        {
+            wallBorderLeft = GameObject.Find("BorderLeftForPlayer").transform;
+        }
+
+        if (enemyT3BoundarySpawnPoint == null)
+        {
+            enemyT3BoundarySpawnPoint = GameObject.Find("SpawnBoundaryT3").transform;
+        }
         //bunshinRb.AddForce(Vector3.down * gravityModifier * bunshinRb.mass, ForceMode.Force);
-        
+
     }
 
     void OnEnable()
@@ -137,7 +156,32 @@ public class EnemyControllerT3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (wallBorderLeft == null)
+        {
+            wallBorderLeft = GameObject.Find("BorderLeftForPlayer").transform;
+        }
+
+        if (enemyT3BoundarySpawnPoint == null)
+        {
+            enemyT3BoundarySpawnPoint = GameObject.Find("SpawnBoundaryT3").transform;
+        }
+
+        // for fall of map
+        if (transform.position.y < minY)
+        {
+            ResetPositionBoundary();
+        }
+
+        // dot product : if negative, enemy is behind wall
+        Vector3 toEnemy = transform.position - wallBorderLeft.position;
+        float dot = Vector3.Dot(wallBorderLeft.forward, toEnemy);
+        //Debug.Log("Dot value: " + dot);
+
+        if (dot < -23f) // enemy behind wall condition
+        {
+            ResetPositionBoundary();
+        }
+
         if (slowMoScript == null)
         {
             slowMoScript = FindFirstObjectByType<SlowMoController>();
@@ -151,6 +195,17 @@ public class EnemyControllerT3 : MonoBehaviour
         if (spawnManagerV2 == null)
         {
             spawnManagerV2 = FindFirstObjectByType<SpawnManagerV2>();
+        }
+
+        if (transform.position.y > maxY)
+        {
+            applySuperYGravity = true;
+            applyLocalGravity = false;
+        }
+        else if (transform.position.y < maxY)
+        {
+            applySuperYGravity = false;
+            applyLocalGravity = true;
         }
 
         if (!isSlide)
@@ -191,6 +246,12 @@ public class EnemyControllerT3 : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (applySuperYGravity == true)
+        {
+            Vector3 customGravity = Vector3.down * 9.81f * maxYGravityModifier;
+            enemyRb.AddForce(customGravity, ForceMode.Acceleration);
+        }
+
         if(applyLocalGravity)
         {
             Vector3 customGravity = Vector3.down * 9.81f * gravityModifier;
@@ -610,6 +671,13 @@ public class EnemyControllerT3 : MonoBehaviour
         // disable T3
         gameObject.SetActive(false);
         spawnManagerV2.EnemyT3StatusDead();
+    }
+
+    public void ResetPositionBoundary()
+    {
+        transform.position = enemyT3BoundarySpawnPoint.position;
+        transform.rotation = enemyT3BoundarySpawnPoint.rotation;
+
     }
 
 }

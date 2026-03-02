@@ -21,10 +21,11 @@ public class SpawnManagerV2 : MonoBehaviour
     [SerializeField] private float currentWaveCount = 1; // indefinite but start with 1
     [SerializeField] private float currentLevelCount = 0; // indefinite
 
-    [SerializeField] private float smokeDupeInterval = 5f;
+    [SerializeField] private float smokeDupeInterval = 3f;
     [SerializeField] public bool isAliveT3 = true;
     [SerializeField] public bool isGoal = false;
     [SerializeField] public bool isFailAttempt = false;
+    [SerializeField] public bool isT3SpawnedOnce = false;
 
     //[SerializeField] private float speedIncrease; // indefinite
     //[SerializeField] private float T3HPIncrease; // indefinite
@@ -59,6 +60,7 @@ public class SpawnManagerV2 : MonoBehaviour
     [SerializeField] private GameObject goalDetectScreen;
     [SerializeField] private GameObject noGoalDetectScreen;
 
+
     //public StatsIncrementManagerV2 statsIncrementManagerV2;
 
     public void Initialize()
@@ -89,7 +91,7 @@ public class SpawnManagerV2 : MonoBehaviour
             noGoalDetectScreen.SetActive(false);
         }
 
-        
+        scoreManager.GameOverResetScore(); // reset score but not saving that 0 value
 
         Resets();
 
@@ -119,6 +121,11 @@ public class SpawnManagerV2 : MonoBehaviour
         if (goalPostController == null)
         {
             goalPostController = FindFirstObjectByType<GoalPostController>();
+        }
+
+        if (scoreManager == null)
+        {
+            scoreManager = FindFirstObjectByType<ScoringSys>();
         }
     }
 
@@ -219,7 +226,7 @@ public class SpawnManagerV2 : MonoBehaviour
             else if (currentWaveCount == 5) // spawn T3
             {
                 // Only spawn if boss not already in hierarchy
-                if (GameObject.FindWithTag("WifeEnemy") == null)
+                if (GameObject.FindWithTag("WifeEnemy") == null && isT3SpawnedOnce == false)
                 {
                     for (int i = 0; i < numberSpawnBossGoal; i++)
                     {
@@ -233,8 +240,9 @@ public class SpawnManagerV2 : MonoBehaviour
                         // SpawnT3(currentWaveCount, currentLevelCount);
                         // spawnEndEnemy = true; // wait wave end
                     }
+                    isT3SpawnedOnce = true;
                 }
-                
+
                 //for testing 
                 for (int i = 0; i < SmokeDupeUnits; i++)
                 {
@@ -246,7 +254,27 @@ public class SpawnManagerV2 : MonoBehaviour
 
                     //spawnpowerups
                     //SpawnPowerUp(currentWaveCount, currentLevelCount);
+                    //yield return new WaitForSeconds(smokeDupeInterval);
                 }
+
+                if (isAliveT3 == true) // shud fixed the non icrement on new level
+                {
+                    //distanceCounter.levelDistance += 100;
+                    distanceCounter.CounterIncrement();
+                }
+                else if (isAliveT3 == false)
+                {
+                    yield return new WaitForSeconds(4.5f); // wait a few secs before count up to spawn keeper
+                    currentWaveCount++;
+                }
+
+                yield return new WaitForSeconds(smokeDupeInterval);
+
+                //InvokeRepeating(nameof(SpawnSmokeDupes), 0f, smokeDupeInterval);
+
+                
+
+
                 //while (isAliveT3)
                 //{
                 //    string[] enemyTypes = { "SmokeDupe" };
@@ -260,19 +288,10 @@ public class SpawnManagerV2 : MonoBehaviour
                 //    new WaitForSeconds(smokeDupeInterval);
                 //}
                 // PLS INCLUDE CONDITION TO CHECK T3 IS DEAD AND COUNT UP AND END WHILE LOOP FOR SMOKE DUPE SPAWN
-                yield return new WaitForSeconds(waveInterval);
+                //yield return new WaitForSeconds(waveInterval); // this might be preventing the delayed increment of distance
                 //currentWaveCount++;
 
-                if (isAliveT3 == false)
-                {
-                    yield return new WaitForSeconds(4.5f); // wait a few secs before count up to spawn keeper
-                    currentWaveCount++;
-                }
-                else if(isAliveT3 == true) // shud fixed the non icrement on new level
-                {
-                    //distanceCounter.levelDistance += 100;
-                    distanceCounter.CounterIncrement();
-                }
+
 
             }
             else if (currentWaveCount == 6) // spawn goal
@@ -431,6 +450,7 @@ public class SpawnManagerV2 : MonoBehaviour
         isGoal = false;
         isFailAttempt = false;
         isKeeperInstanced = false; // to reset keeper spawn check for ball script
+        isT3SpawnedOnce = false;
 
         if (goalDetectScreen != null && noGoalDetectScreen != null)
         {
@@ -462,5 +482,23 @@ public class SpawnManagerV2 : MonoBehaviour
 
         gameUIManager.HidePanels();
     }
+
+    //private void SpawnSmokeDupes()
+    //{
+    //    for (int i = 0; i < SmokeDupeUnits; i++)
+    //    {
+    //        string[] enemyTypes = { "SmokeDupe" };
+    //        string chosenType = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Length)];
+
+    //        // spawn method call
+    //        pooler.SpawnFromPool(chosenType, currentWaveCount, currentLevelCount);
+
+    //        //spawnpowerups
+    //        //SpawnPowerUp(currentWaveCount, currentLevelCount);
+    //        //yield return new WaitForSeconds(0);
+    //    }
+
+    //}
+
 
 }
